@@ -1,0 +1,49 @@
+table {
+  thead {
+    white-space: nowrap;
+  }
+  // .v-data-table__td {
+  //   background: #dadfe0;
+  // }
+}
+
+.v-data-table {
+  background: unset !important;
+  thead {
+    background: $gray-gradient;
+    color: #fff;
+    th {
+      font-weight: bolder;
+      font-size: 16px;
+      &:hover {
+        color: #fff !important;
+      }
+    }
+  }
+  tbody {
+    tr {
+      td {
+        border-bottom: unset !important;
+      }
+      &:nth-child(even) {
+        background: #fff;
+      }
+      &:nth-child(odd) {
+        background: #f7f7f7;
+      }
+    }
+  }
+  .downBtn {
+    font-size: 0.8rem;
+  }
+  .pagination {
+    margin-top: 2rem;
+    .v-input {
+      width: 65px;
+      flex: unset;
+    }
+    .v-input__control {
+      width: 65px;
+    }
+  }
+}

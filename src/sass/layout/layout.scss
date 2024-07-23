@@ -1,0 +1,364 @@
+* {
+  ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  a {
+    text-decoration: none;
+  }
+  input,
+  select {
+    border-radius: 0.25rem !important;
+  }
+}
+//左側選單
+.navDrawer {
+  padding-left: rem(16);
+  &.v-navigation-drawer {
+    background-color: unset;
+    border: 0;
+  }
+  @include screen('notebook') {
+    padding-left: rem(0);
+    &.v-navigation-drawer {
+      background-color: #008be6;
+    }
+  }
+  > .v-navigation-drawer__content {
+    display: flex;
+    flex-direction: column;
+
+    .v-list {
+      flex-grow: 1;
+      overflow-y: scroll;
+      .v-list-item__spacer {
+        display: none;
+      }
+      .v-list-item--nav {
+        padding-inline: 16px;
+      }
+      .v-list-item--nav:not(:only-child) {
+        background: #fff;
+      }
+      .v-list-group__items {
+        .v-list-item--nav:not(:only-child) {
+          // background-color: unset;
+          background: rgba(0, 85, 188, 0.6);
+
+          min-height: 40px !important;
+          &.v-list-item--active {
+            background: #0055bc;
+          }
+          .v-list-item-title {
+            color: #fff;
+            font-weight: 800;
+          }
+        }
+      }
+    }
+    .v-list-item {
+      border-radius: 6px;
+      + .v-list-group__items {
+        .v-list-item {
+          height: rem(35);
+          padding-inline-start: 12px !important;
+          padding: 4px 8px;
+          .v-list-item-title {
+            margin-left: rem(24);
+            font-weight: 400;
+          }
+        }
+      }
+      .v-list-item__prepend {
+        color: $primary;
+        > .v-icon {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  .v-list-item__content {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: flex-end;
+    margin-left: 0.5rem;
+    .v-list-item-title {
+      line-height: 1.5em;
+      font-size: 1em;
+      color: $primary;
+      font-weight: 600;
+    }
+  }
+  .drawerBtn {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    right: -30px;
+    top: calc(50vh - 60px);
+    // background: $defaultBg;
+    width: rem(60);
+    height: rem(60);
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.15) 2px 0px 3px;
+    span {
+      transition: 0.5s all;
+      margin-left: 0.5rem;
+      // color: $defaultPrimary;
+      font-size: 3rem;
+      transform: rotate(180deg);
+    }
+  }
+}
+.searchBtn {
+  color: #fff !important;
+  font-size: rem(16) !important;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  .v-btn__content {
+    margin-bottom: 0.25rem;
+  }
+}
+.searchContent {
+  .subtitle {
+    margin: 0 1.2rem;
+    margin-bottom: 1rem;
+  }
+}
+//header
+.logoImg {
+  display: flex;
+  margin-left: rem(24);
+  align-items: center;
+  .logo {
+    width: 100px;
+  }
+  h1 {
+    color: #fff;
+    font-size: 1.6rem;
+    letter-spacing: 0.25rem;
+    margin-left: 1rem;
+    font-weight: 600;
+    span {
+      padding-left: 2rem;
+      position: relative;
+      letter-spacing: 0rem;
+      font-weight: 900;
+      &::before {
+        position: absolute;
+        content: '';
+        height: 26px;
+        width: 1.5px;
+        top: 7px;
+        background-color: #fff;
+        left: 12px;
+      }
+    }
+  }
+  @include screen('notebook') {
+    .logo {
+      width: 60px;
+      margin-right: 0.5rem;
+    }
+    h1 {
+      font-size: 1.2rem;
+      margin-left: 0;
+      span {
+        &::before {
+          height: 20px;
+        }
+      }
+    }
+  }
+  @include screen('tablet') {
+    margin-left: 0rem;
+    h1 {
+      font-size: 1rem;
+      span {
+        display: block;
+        padding: 0;
+        &::before {
+          display: none;
+        }
+      }
+    }
+  }
+  @include screen('mobile') {
+    .logo {
+      display: none;
+    }
+  }
+}
+//使用者登入資訊
+.userInfo {
+  display: flex;
+  color: #fff;
+  margin-right: rem(48);
+  overflow: hidden;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 800;
+  letter-spacing: 0.15rem;
+  > div {
+    padding: 0.5rem 1rem;
+    min-width: rem(80);
+    text-align: center;
+    line-height: normal;
+    border-radius: 1.25rem;
+    line-height: 1rem;
+  }
+  @include screen('notebook') {
+    margin-right: 1rem;
+    > div {
+      font-size: 0.75rem;
+      min-width: unset;
+      white-space: nowrap;
+    }
+  }
+}
+//左側選單點擊收起
+.navDrawer.hidden {
+  @include screen('notebook') {
+    width: 0 !important;
+  }
+  > .v-navigation-drawer__content {
+    .logoImg {
+      margin: rem(30) rem(10);
+      .logo {
+        + h1 {
+          display: none;
+        }
+      }
+      + .v-list {
+        width: unset;
+      }
+    }
+    .v-list-group {
+      .v-list-item {
+        .v-list-item__content {
+          justify-content: center;
+          .v-list-item-title {
+            display: none;
+          }
+          img {
+            width: rem(24);
+            height: rem(24);
+            margin-right: 0;
+          }
+        }
+        .v-list-item__append {
+          display: none;
+        }
+        + .v-list-group__items {
+          display: none;
+        }
+      }
+    }
+  }
+  .userInfo {
+    margin-bottom: 1.5rem;
+    padding: 0.25rem;
+    .v-avatar,
+    ul {
+      display: none;
+    }
+  }
+  .drawerBtn {
+    span {
+      transform: rotate(0deg);
+    }
+  }
+}
+.menuBtn {
+  .v-btn__content {
+    color: #fff;
+    font-size: 1.5rem;
+  }
+}
+//color
+.bg-secondary-gradient {
+  background: $secondary-gradient !important;
+}
+.bg-light-gradient {
+  background: $light-gradient !important;
+}
+.bg-gray-gradient {
+  background: $gray-gradient !important;
+}
+
+// 手機版本開合設定
+.v-application {
+  background: url('@/assets/images/bg.jpg') no-repeat !important;
+  background-size: cover !important;
+  background-position: top right;
+  background-attachment: fixed !important;
+}
+.v-app-bar {
+  &.v-toolbar {
+    background: url('@/assets/images/header.jpg') no-repeat !important;
+    box-shadow: none !important;
+    background-size: cover !important;
+    background-position: center right;
+  }
+}
+
+main {
+  @media (min-width: 1280px) {
+    > div .v-container {
+      max-width: 1400px;
+    }
+  }
+  @include screen('notebook') {
+    padding: 0 !important;
+    padding-top: rem(64) !important;
+    width: 100% !important;
+  }
+}
+header {
+  @include screen('notebook') {
+    left: 0 !important;
+    width: 100% !important;
+  }
+}
+
+.v-btn.btn {
+  min-width: 120px;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  height: unset !important;
+}
+
+.v-main {
+  > div {
+    background: #f5fafe;
+    border-radius: 16px;
+    margin: 0.5rem 1rem 1rem 1rem;
+  }
+  h2 {
+    margin: 1rem 0 1.5rem 0;
+  }
+  .title {
+    font-size: 1.6rem;
+    font-weight: 800;
+  }
+}
+.subtitle {
+  font-size: rem(18);
+  position: relative;
+  padding-left: 1.2rem;
+  border-bottom: $primary 2px solid;
+  padding-bottom: 0.3rem;
+
+  &::before {
+    position: absolute;
+    content: '';
+    background: url(@/assets/images/titleIcon.png) no-repeat center center;
+    background-size: contain;
+    width: 12px;
+    height: 24px;
+    top: 0;
+    left: 0;
+  }
+}

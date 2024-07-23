@@ -1,0 +1,92 @@
+.formGrp {
+  label {
+    font-weight: 500;
+    margin: 0 0.5rem;
+    font-size: 1rem;
+  }
+  &.datePick {
+    .tilde {
+      display: flex;
+      align-items: center;
+      padding: 0;
+      @include screen('mobile') {
+        display: block;
+        width: 100%;
+        text-align: center;
+      }
+    }
+  }
+  &.checkboxGrp {
+    .item {
+      .v-input {
+        border-radius: 0.25rem;
+        padding: 0 0.5rem;
+        border: 1px solid #ccc;
+
+        &:has(.text-white) {
+          border: 1px solid transparent;
+          background: $secondary-gradient;
+          color: #fff;
+          .v-label {
+            opacity: 1;
+          }
+          .v-selection-control__input {
+            i {
+              opacity: 1;
+              background: unset;
+              color: #fff;
+              font-size: 1rem;
+              border-radius: 0.3rem;
+            }
+          }
+        }
+        &.v-input--density-default {
+          --v-input-control-height: unset;
+        }
+        .v-selection-control__wrapper {
+          width: 30px;
+        }
+        .v-selection-control__input {
+          i {
+            background: #dadada;
+
+            color: #dadada;
+            font-size: 0.75rem;
+            border-radius: 0.1rem;
+          }
+        }
+      }
+      .v-selection-control .v-label {
+        margin-left: 0;
+      }
+      .checkboxHasSelect {
+        border: 1px solid #ccc;
+        border-radius: 0.25rem;
+        .v-select {
+          margin-bottom: 0.2rem;
+        }
+        &:has(.text-white) {
+          border: 1px solid transparent;
+          background: $secondary-gradient;
+          .v-select {
+            color: #fff;
+          }
+        }
+        > .v-input {
+          border: none;
+          background: unset;
+        }
+      }
+    }
+  }
+  .necessary {
+    color: $error;
+    text-decoration: none;
+  }
+}
+.v-field--variant-filled .v-field__overlay {
+  opacity: 0 !important;
+}
+input:-internal-autofill-selected {
+  background: #fff !important;
+}
