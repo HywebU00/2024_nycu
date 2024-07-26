@@ -3,20 +3,24 @@
     <div class="index_container">
       <div class="index_title">
         <h3 class="text-center">
-          <img style="width: 36px" src="~@/assets/images/logo.png" alt="" /><img
-            style="margin-left: 1rem"
+          <img
+            style="margin-left: 1rem; width: 100px"
             src="~@/assets/images/logo.png"
             alt=""
           />
-          <p class="text-h5">管理平台樣板</p>
+          <p class="text-h5 ml-3 text-white font-weight-bold">
+            陽明交通大學 繳費平台管理系統
+          </p>
         </h3>
-        <v-btn color="secondary"><a href="">檔案下載</a></v-btn>
+        <v-btn color="secondary"
+          ><a href="https://github.com/HywebU00/2024_nycu">檔案下載</a></v-btn
+        >
       </div>
 
       <div class="d-flex mb-2 justify-center">
         <div style="width: 75%" class="mt-1">
           <v-card>
-            <v-table>
+            <v-table class="index_table">
               <thead class="bg-tHeader">
                 <tr>
                   <th class="text-left">編號</th>
@@ -49,33 +53,13 @@ export default {
     return {
       desserts: [
         {
-          name: "首頁",
-          link: "",
-          note: "",
+          name: "收費項目",
+          link: "https://hywebu00.github.io/2024_nycu/#/",
+          note: "新增收費項目按鈕中有選單",
         },
         {
-          name: "功能頁",
-          link: "",
-          note: "",
-        },
-        {
-          name: "新增頁",
-          link: "",
-          note: "",
-        },
-        {
-          name: "fancyBox頁",
-          link: "",
-          note: "",
-        },
-        {
-          name: "相簿頁",
-          link: "",
-          note: "",
-        },
-        {
-          name: "樹狀分類＋功能頁",
-          link: "",
+          name: "登入頁",
+          link: "https://hywebu00.github.io/2024_nycu/#/login",
           note: "",
         },
       ],
@@ -86,12 +70,17 @@ export default {
 
 <style lang="scss" scope>
 .index_bg {
-  background: #e9ecef;
+  background: #a3bbd3;
   height: 100vh;
 }
 .index_container {
   padding-top: 5rem;
   padding-bottom: 10rem;
+}
+.bg-tHeader {
+  background: #1a3243;
+  color: #fff;
+  font-weight: 900;
 }
 .index_title {
   width: 75%;
@@ -120,7 +109,6 @@ export default {
 }
 .index_table {
   thead {
-    background: #17214c;
     tr > th {
       font-size: 1rem !important;
       color: #fff !important;
@@ -131,8 +119,14 @@ export default {
     }
   }
   tbody {
+    tr:nth-child(odd) {
+      background: #ebedf0;
+    }
     tr > td {
       &:nth-child(2) {
+        min-width: 150px;
+      }
+      &:nth-child(4) {
         min-width: 250px;
       }
     }

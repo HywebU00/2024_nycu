@@ -156,7 +156,7 @@
                         申請停用
                       </v-chip>
                     </h4>
-                    <div class="ml-4 mt-2 text-primary info">
+                    <div class="ml-4 mt-2 text-gray info">
                       申請時間:2024/06/07 13:00
                     </div>
                     <v-form>

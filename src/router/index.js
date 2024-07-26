@@ -7,16 +7,16 @@ const routes = [
     component: () => import("@/views/layout/adminLayout.vue"),
     children: [
       {
+        path: "/",
+        component: () => import("@/views/admin/chargeComponent.vue"),
+      },
+      {
         path: "system",
         component: () => import("@/views/admin/systemComponent.vue"),
       },
       {
         path: "component",
         component: () => import("@/views/admin/Component.vue"),
-      },
-      {
-        path: "/",
-        component: () => import("@/views/admin/chargeComponent.vue"),
       },
       {
         path: "from",

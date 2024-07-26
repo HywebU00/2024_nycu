@@ -362,3 +362,90 @@ header {
     left: 0;
   }
 }
+.loginPage {
+  background: url('@/assets/images/login_bg.png') no-repeat center bottom;
+  .loginCard {
+    margin-top: calc((100vh - 520px) / 2);
+    .v-sheet {
+      padding: rem(54);
+      border-radius: 1rem;
+      background-color: rgba(255, 255, 255, 0.8);
+    }
+    .v-divider {
+      opacity: 0.35;
+    }
+    .v-form {
+      .v-img {
+        height: rem(50);
+      }
+      .v-field__prepend-inner {
+        align-items: center;
+        padding-top: 0;
+        i {
+          font-size: 1.75rem;
+          color: #088dea;
+          opacity: 1;
+        }
+      }
+      .v-input__control {
+        border-radius: 0.5rem;
+        background: $light2-gradient;
+        position: relative;
+        padding: 1px;
+        &::before {
+          background: $blue-gradient;
+          width: 100%;
+          position: absolute;
+          content: '';
+          height: 52px;
+          top: 0px;
+          z-index: 0;
+          left: 0px;
+          border-radius: 0.55rem;
+        }
+      }
+      input {
+        height: rem(50);
+        &::placeholder {
+          color: $gray3;
+          opacity: 0.9;
+        }
+      }
+      .v-field {
+        color: rgba(63, 202, 253, 0.7);
+        background: $light2-gradient;
+      }
+    }
+    .btn {
+      width: 100%;
+      height: rem(54) !important;
+    }
+    .verifyGrp {
+      .v-img {
+        margin-left: 0.5rem;
+      }
+    }
+    @include screen('mobile') {
+      margin: 1rem;
+      margin-top: calc((100vh - 500px) / 2);
+      h2 {
+        line-height: 1.75rem;
+      }
+      .v-sheet {
+        padding: rem(40);
+      }
+    }
+    @include screen('xs_mobile') {
+      .verifyGrp {
+        display: block !important;
+        .v-input {
+          margin-bottom: 0.5rem;
+        }
+        .v-img {
+          margin-left: 0;
+          height: auto;
+        }
+      }
+    }
+  }
+}

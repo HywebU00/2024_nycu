@@ -39,12 +39,10 @@
         <!-- 網站管理 start -->
         <v-list-group value="網站管理">
           <template v-slot:activator="{ props }">
-            <v-list-item
-              prepend-icon="mdi-view-compact-outline"
-              v-bind="props"
-              title="網站管理"
-              color="primary"
-            >
+            <v-list-item v-bind="props" title="網站管理" color="primary">
+              <span class="material-symbols-outlined text-primary mr-2">
+                web
+              </span>
             </v-list-item>
           </template>
           <v-list-item
@@ -64,12 +62,10 @@
         <!-- 收費項目管理 start -->
         <v-list-group value="收費項目管理">
           <template v-slot:activator="{ props }">
-            <v-list-item
-              prepend-icon="mdi-credit-card-plus-outline"
-              v-bind="props"
-              title="收費項目管理"
-              color="primary"
-            >
+            <v-list-item v-bind="props" title="收費項目管理" color="primary">
+              <span class="material-symbols-outlined text-primary mr-2">
+                add_card
+              </span>
             </v-list-item>
           </template>
           <v-list-item
@@ -89,11 +85,10 @@
         <!-- 會員管理 start -->
         <v-list-group value="會員管理">
           <template v-slot:activator="{ props }">
-            <v-list-item
-              prepend-icon="mdi-account-multiple-outline"
-              v-bind="props"
-              title="會員管理"
-            >
+            <v-list-item v-bind="props" title="會員管理" color="primary">
+              <span class="material-symbols-outlined text-primary mr-2">
+                group
+              </span>
             </v-list-item>
           </template>
           <v-list-item
@@ -113,11 +108,10 @@
         <!-- 會員管理 start -->
         <v-list-group value="系統管理">
           <template v-slot:activator="{ props }">
-            <v-list-item
-              prepend-icon="mdi-cog-outline"
-              v-bind="props"
-              title="系統管理"
-            >
+            <v-list-item v-bind="props" title="系統管理" color="primary">
+              <span class="material-symbols-outlined text-primary mr-2">
+                settings
+              </span>
             </v-list-item>
           </template>
           <v-list-item
@@ -137,11 +131,10 @@
         <!-- 帳號管理 start -->
         <v-list-group value="帳號管理">
           <template v-slot:activator="{ props }">
-            <v-list-item
-              prepend-icon="mdi-account-cog-outline"
-              v-bind="props"
-              title="帳號管理"
-            >
+            <v-list-item v-bind="props" title="帳號管理" color="primary">
+              <span class="material-symbols-outlined text-primary mr-2">
+                manage_accounts
+              </span>
             </v-list-item>
           </template>
           <v-list-item
@@ -161,11 +154,10 @@
         <!-- 中央權限控管 start -->
         <v-list-group value="中央權限控管">
           <template v-slot:activator="{ props }">
-            <v-list-item
-              prepend-icon="mdi-lock-outline"
-              v-bind="props"
-              title="中央權限控管"
-            >
+            <v-list-item v-bind="props" title="中央權限控管" color="primary">
+              <span class="material-symbols-outlined text-primary mr-2">
+                lock
+              </span>
             </v-list-item>
           </template>
           <v-list-item
@@ -185,11 +177,10 @@
         <!-- 繳費單管理 start -->
         <v-list-group value="繳費單管理">
           <template v-slot:activator="{ props }">
-            <v-list-item
-              prepend-icon="mdi-script-text-outline"
-              v-bind="props"
-              title="繳費單管理"
-            >
+            <v-list-item v-bind="props" title="繳費單管理" color="primary">
+              <span class="material-symbols-outlined text-primary mr-2">
+                receipt_long
+              </span>
             </v-list-item>
           </template>
           <v-list-item
@@ -209,11 +200,10 @@
         <!-- 對帳管理 start -->
         <v-list-group value="對帳管理">
           <template v-slot:activator="{ props }">
-            <v-list-item
-              prepend-icon="mdi-feature-search-outline"
-              v-bind="props"
-              title="對帳管理"
-            >
+            <v-list-item v-bind="props" title="對帳管理" color="primary">
+              <span class="material-symbols-outlined text-primary mr-2">
+                find_in_page
+              </span>
             </v-list-item>
           </template>
           <v-list-item
@@ -241,12 +231,14 @@
         <v-list-group value="login">
           <template v-slot:activator="{ props }">
             <v-list-item
-              prepend-icon="mdi-login"
               v-bind="props"
               append-icon=""
               title="login"
               @click="pushLink('login')"
             >
+              <span class="material-symbols-outlined text-primary mr-2">
+                login
+              </span>
             </v-list-item>
           </template>
         </v-list-group>

@@ -12,13 +12,11 @@
 @import '@/sass/customizingComponents/accordion.scss';
 @import '@/sass/customizingComponents/datePicker.scss';
 
-//material-icons-round
-@import '@/sass/vendor/material-icons-round.scss';
+//material-icons
+@import '@/sass/vendor/material-icons.scss';
 
 //layout
 @import '@/sass/layout/layout.scss';
-@import '@/sass/layout/customize_color.scss';
-@import '@/sass/layout/customize_font.scss';
 
 //vuetifyCSS
 @import '@/sass/components/VListItem.scss';
