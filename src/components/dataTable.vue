@@ -93,7 +93,7 @@ export default {
         { title: "收費性質", key: "type" },
         { title: "申請項目", key: "project" },
         { title: "狀態", key: "status", sortable: false },
-        { title: "動作", key: "action", sortable: false },
+        { title: "動作", key: "action", sortable: false, align: "center" },
       ],
       desserts: [
         {
