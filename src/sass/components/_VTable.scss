@@ -3,3 +3,6 @@
 .v-table--density-default > .v-table__wrapper > table > tfoot > tr > th {
   height: 2.5rem !important; //calc(var(--v-table-header-height) + 0px);
 }
+.v-table {
+  border-radius: 0 !important;
+}

@@ -6,7 +6,30 @@ table {
   //   background: #dadfe0;
   // }
 }
-
+.dataTable {
+  .v-card-title {
+    .v-input {
+      flex: unset;
+    }
+  }
+}
+.dataTableTitle {
+  position: relative;
+  h4 {
+    margin-top: 1rem;
+  }
+  .v-input {
+    position: absolute;
+    right: 0;
+    top: 0.25rem;
+  }
+  @include screen('notebook') {
+    .v-input {
+      position: relative;
+      top: 0.75rem;
+    }
+  }
+}
 .v-data-table {
   background: unset !important;
   thead {
@@ -30,6 +53,18 @@ table {
       }
       &:nth-child(odd) {
         background: #f7f7f7;
+      }
+    }
+  }
+  .v-select,
+  .v-input {
+    .v-input__control {
+      font-size: 0.9rem;
+      option,
+      .v-label,
+      .v-field,
+      .v-field__input {
+        font-size: 0.9rem;
       }
     }
   }

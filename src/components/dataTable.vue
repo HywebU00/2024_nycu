@@ -1,48 +1,63 @@
 <template>
   <v-data-table
+    class="dataTable"
     v-model:page="page"
+    show-select
     :headers="headers"
     :items="desserts"
+    item-value="date"
     :items-per-page="itemsPerPage"
   >
-    <template v-slot:item="{ item }">
-      <tr class="">
-        <td class="">{{ item.date }}</td>
-        <td class="">{{ item.num }}</td>
-        <td class="">{{ item.name }}</td>
-        <td class="">{{ item.type }}</td>
-        <td class="">{{ item.project }}</td>
-        <td class="">{{ item.status }}</td>
-        <td class="d-flex justify-center align-center">
-          <v-menu transition="slide-y-transition">
-            <template v-slot:activator="{ props }">
-              <v-btn
-                icon="mdi-chevron-down"
-                class="ma-2 bg-secondary-gradient downBtn"
-                v-bind="props"
-                size="x-small"
-              >
-              </v-btn>
-            </template>
-            <v-card class="pa-2">
-              <v-btn
-                size="small"
-                variant="outlined"
-                class="mb-2"
-                block
-                color="gray"
-                v-bind="activatorProps"
-                >查閱</v-btn
-              >
-              <v-btn size="small" variant="outlined" block color="gray"
-                >停用</v-btn
-              >
-            </v-card>
-          </v-menu>
-        </td>
-      </tr>
+    <template v-slot:item.action="{ item }">
+      <v-menu transition="slide-y-transition">
+        <template v-slot:activator="{ props }">
+          <v-btn
+            icon="mdi-chevron-down"
+            class="ma-2 bg-secondary-gradient downBtn"
+            v-bind="props"
+            size="x-small"
+          >
+          </v-btn>
+        </template>
+        <v-card class="pa-2">
+          <v-btn
+            size="small"
+            variant="outlined"
+            class="mb-2"
+            block
+            color="gray"
+            v-bind="activatorProps"
+            >查閱</v-btn
+          >
+          <v-btn size="small" variant="outlined" block color="gray">停用</v-btn>
+        </v-card>
+      </v-menu>
     </template>
-
+    <template v-slot:item.office="{ item }">
+      <v-select
+        width="160"
+        label="下拉式選單"
+        single-line
+        density="compact"
+        hide-details="auto"
+        :items="['選項ㄧ', '選項二', '選項三']"
+      ></v-select>
+    </template>
+    <template v-slot:item.status="{ item }">
+      <span class="text-no-wrap">
+        {{ item.status }}
+      </span>
+    </template>
+    <template v-slot:item.pay="{ item }">
+      <v-select
+        width="160"
+        label="下拉式選單"
+        single-line
+        density="compact"
+        hide-details="auto"
+        :items="['選項ㄧ', '選項二', '選項三']"
+      ></v-select>
+    </template>
     <template v-slot:bottom>
       <div class="d-flex align-center justify-center pagination">
         <span
@@ -74,13 +89,13 @@
     </template>
   </v-data-table>
 </template>
-
 <script>
 export default {
   data() {
     return {
       page: 1,
       itemsPerPage: 5,
+      selected: [],
       headers: [
         {
           align: "start",
@@ -90,10 +105,12 @@ export default {
         },
         { title: "計畫編號", key: "num" },
         { title: "收費項目名稱", key: "name" },
+        { title: "單位名稱", key: "office", align: "center" },
         { title: "收費性質", key: "type" },
         { title: "申請項目", key: "project" },
         { title: "狀態", key: "status", sortable: false },
         { title: "動作", key: "action", sortable: false, align: "center" },
+        { title: "收費項目", key: "pay", align: "center" },
       ],
       desserts: [
         {
