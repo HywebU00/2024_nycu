@@ -446,22 +446,6 @@
                             </v-col>
                           </v-row>
                           <v-row class="formGrp">
-                            <v-col class="pb-0" cols="12" lg="">
-                              <label class="text-gray font-weight-bold" for=""
-                                >企業識別碼</label
-                              >
-                            </v-col>
-                            <v-col cols="12" class="pt-0">
-                              <v-select
-                                label="下拉式選單"
-                                single-line
-                                density="compact"
-                                hide-details="auto"
-                                :items="['選項ㄧ', '選項二', '選項三']"
-                              ></v-select>
-                            </v-col>
-                          </v-row>
-                          <v-row class="formGrp">
                             <v-col>
                               <label
                                 class="text-gray font-weight-bold mb-3 d-block"
