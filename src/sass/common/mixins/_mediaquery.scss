@@ -2,7 +2,7 @@
 @mixin screen($size) {
   $xxl_desktop: '(min-width: #{$screen-xxl})'; // max-width >= 2560px
   $xl_desktop: '(min-width: #{$screen-xl})'; // max-width >= 1920px
-  $desktop: '(min-width: #{$screen-lg})'; // max-width >= 1280px
+  $desktop: '(max-width: #{$screen-lg})'; // max-width >= 1280px
   $notebook: '(max-width: #{$screen-md-max})'; // max-width <= 960px
   $tablet: '(max-width: #{$screen-sm-max})'; // max-width <= 600x
   $mobile: '(max-width: #{$screen-xs-max})'; // max-width <= 556px
@@ -16,16 +16,16 @@
   // $screen-sm-max: 600px; //768px !default; //手機
   // $screen-xs-max: 576px !default; //極小尺寸 - hyui
   // $screen-xs-mobile-max: 320px !default; //極小尺寸 - flex
-  @if $size==desktop {
+  @if $size ==desktop {
     @media screen and #{$desktop} {
       @content;
     }
   } @else if $size==xl_desktop {
-    @media screen and #{$xl-notebook} {
+    @media screen and #{$xl_desktop} {
       @content;
     }
   } @else if $size==xxl_desktop {
-    @media screen and #{$xxl-notebook} {
+    @media screen and #{$xxl_desktop} {
       @content;
     }
   } @else if $size==notebook {
@@ -41,7 +41,7 @@
       @content;
     }
   } @else if $size==xs_mobile {
-    @media screen and #{$xs-mobile} {
+    @media screen and #{$xs_mobile} {
       @content;
     }
   } @else {

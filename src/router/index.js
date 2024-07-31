@@ -60,6 +60,10 @@ const routes = [
     path: "/login",
     component: () => import("@/views/layout/loginPage.vue"),
   },
+  {
+    path: "/front",
+    component: () => import("@/views/layout/frontLoginPage.vue"),
+  },
 ];
 
 const router = createRouter({
