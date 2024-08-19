@@ -82,3 +82,50 @@ table {
     }
   }
 }
+.paymentTable {
+  &.v-data-table tbody tr {
+    &:nth-child(odd),
+    &:nth-child(even) {
+      &:hover {
+        background: darken(#f7f7f7, 1%);
+        cursor: pointer;
+      }
+    }
+  }
+  &.v-data-table {
+    thead {
+      tr {
+        th {
+          &:last-child {
+            padding-right: 2rem;
+          }
+        }
+      }
+    }
+    tbody {
+      tr {
+        td {
+          &:last-child {
+            padding-right: 2rem;
+          }
+        }
+      }
+    }
+  }
+}
+.tableHover {
+  &.v-data-table tbody tr {
+    &:nth-child(odd),
+    &:nth-child(even) {
+      &:hover {
+        background: darken(#f7f7f7, 1%);
+        cursor: pointer;
+      }
+    }
+  }
+}
+.smallBtn {
+  .v-btn__content {
+    margin-bottom: 0.2rem;
+  }
+}

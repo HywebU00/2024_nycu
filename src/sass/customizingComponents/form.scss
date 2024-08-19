@@ -21,7 +21,7 @@
       .v-input {
         border-radius: 0.25rem;
         padding: 0 0.5rem;
-        border: 1px solid #ccc;
+        border: 1px solid #acacac;
 
         &:has(.text-white) {
           border: 1px solid transparent;
@@ -89,4 +89,17 @@
 }
 input:-internal-autofill-selected {
   background: #fff !important;
+}
+.paymentForm {
+  > .v-container {
+    .formGrp {
+      > div:has(label) {
+        &:first-child {
+          width: 150px;
+          flex-basis: 150px;
+          flex-grow: unset;
+        }
+      }
+    }
+  }
 }

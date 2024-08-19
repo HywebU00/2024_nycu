@@ -30,7 +30,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="(item, index) in desserts" :key="item.name">
+                <tr v-for="(item, index) in admin" :key="item.name">
                   <td>{{ index + 1 }}</td>
                   <td>{{ item.name }}</td>
                   <td>
@@ -76,7 +76,7 @@
 export default {
   data() {
     return {
-      desserts: [
+      admin: [
         {
           name: "收費項目",
           link: "https://hywebu00.github.io/2024_nycu/#/",
@@ -87,11 +87,26 @@ export default {
           link: "https://hywebu00.github.io/2024_nycu/#/login",
           note: "",
         },
+        {
+          name: "建立繳費單",
+          link: "https://hywebu00.github.io/2024_nycu/#/payment",
+          note: "",
+        },
+        {
+          name: "上傳繳費單",
+          link: "https://hywebu00.github.io/2024_nycu/#/upload",
+          note: "",
+        },
+        {
+          name: "批次作廢繳費單",
+          link: "https://hywebu00.github.io/2024_nycu/#/invalid",
+          note: "",
+        },
       ],
       front: [
         {
           name: "前台登入頁",
-          link: "https://hywebu00.github.io/2024_nycu/#/front",
+          link: "https://hywebu00.github.io/2024_nycu/#/frontLogin",
           note: "",
         },
         {

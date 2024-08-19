@@ -205,6 +205,9 @@
     font-size: 0.9rem;
     border-radius: 1.25rem;
     line-height: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   @include screen('notebook') {
     margin-right: 1rem;
@@ -278,6 +281,9 @@
 .bg-secondary-gradient {
   background: $secondary-gradient !important;
 }
+.bg-primary-gradient {
+  background: $primary-gradient !important;
+}
 .bg-light-gradient {
   background: $light-gradient !important;
 }
@@ -333,13 +339,37 @@ header {
     background: #f5fafe;
     border-radius: 16px;
     margin: 0.5rem 1rem 1rem 1rem;
+    > .v-container {
+      &:has(.content) {
+        display: flex;
+        flex-direction: column;
+        height: calc(100vh - 104px);
+        .content {
+          overflow: auto;
+          flex-grow: 1;
+          + .btnList {
+            flex-shrink: 0;
+          }
+        }
+      }
+      .btnList {
+        .btn {
+          margin: 0 0.5rem;
+        }
+      }
+    }
   }
   h2 {
     margin: 1rem 0 1.5rem 0;
-  }
-  .title {
-    font-size: 1.6rem;
-    font-weight: 800;
+
+    &.title {
+      font-size: 1.75rem;
+      font-weight: 800;
+      + .dateInfo {
+        margin-top: -1rem;
+        font-size: 0.9rem;
+      }
+    }
   }
 }
 .subtitle {
@@ -358,6 +388,39 @@ header {
     height: 24px;
     top: 2px;
     left: 0;
+  }
+  .moreBtn {
+    height: 24px !important;
+    border-radius: 0.25rem !important;
+    min-width: 28px;
+    padding: 0 2px;
+    margin: auto;
+    span {
+      font-size: 1.5rem;
+    }
+  }
+}
+.underlineTitle {
+  border-bottom: 1px solid $primary;
+  + .checkboxGrp {
+    line-height: 1rem;
+    .v-input--density-default {
+      --v-input-control-height: 24px;
+    }
+    .v-selection-control__wrapper {
+      height: 1.5rem;
+      .v-selection-control__input {
+        > .v-icon {
+          font-size: 1.2rem;
+          &:not(.mdi-checkbox-marked) {
+            opacity: 0.2;
+          }
+        }
+      }
+    }
+    .v-label {
+      font-size: 0.9rem;
+    }
   }
 }
 .loginPage {
@@ -646,6 +709,49 @@ header {
           font-size: 2rem;
         }
       }
+    }
+  }
+}
+#front {
+  .navDrawer {
+    .v-navigation-drawer__content {
+      .v-list {
+        .hasSubtitle {
+          .v-list-item-subtitle {
+            font-weight: 500;
+            color: $gray2;
+            opacity: 1;
+          }
+          .v-list-item__content {
+            display: flex;
+            flex-wrap: wrap;
+            padding-left: 2rem;
+            span {
+              left: 10px;
+              position: absolute;
+            }
+          }
+        }
+        .v-list-item--nav {
+          padding-inline: 8px;
+          padding-inline-start: 10px;
+          min-height: 60px !important;
+        }
+        .v-list-item__content {
+          margin-left: 0;
+        }
+      }
+    }
+  }
+  .loginBtn {
+    color: #fff;
+    font-weight: 800;
+    min-width: 100px;
+    height: 34px;
+    font-size: 1rem;
+    .material-symbols-outlined {
+      font-size: 1.2rem;
+      font-weight: 600;
     }
   }
 }

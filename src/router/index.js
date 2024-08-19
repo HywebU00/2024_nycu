@@ -11,6 +11,18 @@ const routes = [
         component: () => import("@/views/admin/chargeComponent.vue"),
       },
       {
+        path: "payment",
+        component: () => import("@/views/admin/payment.vue"),
+      },
+      {
+        path: "upload",
+        component: () => import("@/views/admin/upload.vue"),
+      },
+      {
+        path: "invalid",
+        component: () => import("@/views/admin/invalid.vue"),
+      },
+      {
         path: "system",
         component: () => import("@/views/admin/systemComponent.vue"),
       },
@@ -61,8 +73,22 @@ const routes = [
     component: () => import("@/views/layout/loginPage.vue"),
   },
   {
-    path: "/front",
+    path: "/frontLogin",
     component: () => import("@/views/layout/frontLoginPage.vue"),
+  },
+  {
+    path: "/front",
+    component: () => import("@/views/layout/frontLayout.vue"),
+    children: [
+      {
+        path: "/front",
+        component: () => import("@/views/front/cardComponent.vue"),
+      },
+      {
+        path: "/front/component",
+        component: () => import("@/views/front/component.vue"),
+      },
+    ],
   },
 ];
 
