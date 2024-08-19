@@ -37,60 +37,64 @@
       </v-card>
     </div>
     <div class="content">
-      <v-data-table
-        class="dataTable mt-6"
-        v-model:page="page"
-        :headers="cancelHeaders"
-        :items="cancelData"
-        item-value="date"
-        :items-per-page="itemsPerPage"
-        hide-default-footer
-      >
-        <template v-slot:item.download="{ item }">
-          <v-btn color="gray" variant="text" icon="mdi-upload" class="ma-2">
-          </v-btn>
-        </template>
-        <template v-slot:item.cancel="{ item }">
-          <v-dialog max-width="420">
-            <template v-slot:activator="{ props: activatorProps }">
-              <v-btn
-                v-bind="activatorProps"
-                color="gray smallBtn"
-                variant="outlined"
-                size="small"
-                prepend-icon="mdi-trash-can-outline"
-              >
-                作廢
-              </v-btn>
-            </template>
+      <v-card class="elevation-0" color="transparent">
+        <v-card-title class="pa-0 dataTableTitle mb-3">
+          <h4 class="text-primary subtitle d-flex">繳費單作廢</h4>
+        </v-card-title>
+        <v-data-table
+          class="dataTable mt-6"
+          v-model:page="page"
+          :headers="cancelHeaders"
+          :items="cancelData"
+          item-value="date"
+          :items-per-page="itemsPerPage"
+          hide-default-footer
+        >
+          <template v-slot:item.download="{ item }">
+            <v-btn color="gray" variant="text" icon="mdi-upload" class="ma-2">
+            </v-btn>
+          </template>
+          <template v-slot:item.cancel="{ item }">
+            <v-dialog max-width="420">
+              <template v-slot:activator="{ props: activatorProps }">
+                <v-btn
+                  v-bind="activatorProps"
+                  color="gray smallBtn"
+                  variant="outlined"
+                  size="small"
+                  prepend-icon="mdi-trash-can-outline"
+                >
+                  作廢
+                </v-btn>
+              </template>
 
-            <template v-slot:default="{ isActive }">
-              <v-card>
-                <v-card-text class="pa-12 text-center">
-                  確認作廢 125筆 繳費單？
-                </v-card-text>
-
-                <v-card-actions class="d-flex justify-center">
-                  <div class="pa-4 pt-2">
-                    <v-btn
-                      text="取消"
-                      variant="flat"
-                      class="bg-light-gradient text-gray elevation-3 btn"
-                      @click="isActive.value = false"
-                    ></v-btn>
-                    <v-btn
-                      class="bg-secondary-gradient elevation-3 btn"
-                      text="確定"
-                      variant="flat"
-                      @click="isActive.value = false"
-                    ></v-btn>
-                  </div>
-                </v-card-actions>
-              </v-card>
-            </template>
-          </v-dialog>
-        </template>
-      </v-data-table>
+              <template v-slot:default="{ isActive }">
+                <v-card>
+                  <v-card-text class="pa-12 text-center">
+                    確認作廢 125筆 繳費單？
+                  </v-card-text>
+                  <v-card-actions class="d-flex justify-center">
+                    <div class="pa-4 pt-2">
+                      <v-btn
+                        text="取消"
+                        variant="flat"
+                        class="bg-light-gradient text-gray elevation-3 btn"
+                        @click="isActive.value = false"
+                      ></v-btn>
+                      <v-btn
+                        class="bg-secondary-gradient elevation-3 btn"
+                        text="確定"
+                        variant="flat"
+                        @click="isActive.value = false"
+                      ></v-btn>
+                    </div>
+                  </v-card-actions>
+                </v-card>
+              </template>
+            </v-dialog>
+          </template>
+        </v-data-table>
+      </v-card>
     </div>
     <div class="d-flex justify-center pa-2 pt-6 btnList">
       <v-btn
