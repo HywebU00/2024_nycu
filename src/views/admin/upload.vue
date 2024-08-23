@@ -1,6 +1,6 @@
 <template>
   <v-container class="container">
-    <h2 class="text-primary title">批次建立繳費單預覽</h2>
+    <h2 class="text-primary title">批次作廢繳費單預覽</h2>
     <p class="text-gray dateInfo">建立日期 2024/06/10 15:30</p>
     <div class="mb-5 content">
       <v-card class="elevation-0" color="transparent">
@@ -13,10 +13,6 @@
               class="text-subtitle-2 text-primary underlineTitle ml-0 ml-md-6"
             >
               下載繳費單格式檔
-            </div>
-            <div class="d-flex checkboxGrp">
-              <v-checkbox label="新增繳費單" hide-details="auto"></v-checkbox>
-              <v-checkbox label="刪除繳費單" hide-details="auto"></v-checkbox>
             </div>
           </v-col>
         </v-row>

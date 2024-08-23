@@ -98,7 +98,7 @@ export default {
           note: "",
         },
         {
-          name: "批次作廢繳費單",
+          name: "批次作廢繳費單預覽",
           link: "https://hywebu00.github.io/2024_nycu/#/invalid",
           note: "",
         },

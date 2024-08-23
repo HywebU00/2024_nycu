@@ -103,3 +103,9 @@ input:-internal-autofill-selected {
     }
   }
 }
+
+.inputText-end {
+  input {
+    text-align: end;
+  }
+}

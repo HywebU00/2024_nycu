@@ -18,6 +18,16 @@
       >
       </v-btn>
     </template>
+    <template v-slot:item.pay="{ item }">
+      <!-- class 增加 inputText-end 輸入數字 向右靠齊 -->
+      <v-text-field
+        label="請輸入金額"
+        density="compact"
+        single-line
+        hide-details="auto"
+        class=""
+      ></v-text-field>
+    </template>
     <template v-slot:item.file="{ item }">
       <div>
         <v-btn
@@ -61,6 +71,14 @@ export default {
           key: "name",
           align: "start",
           sortable: false,
+          width: "300px",
+        },
+        {
+          title: "繳費金額",
+          key: "pay",
+          align: "center",
+          sortable: false,
+          width: "200px",
         },
         {
           title: "檔案上傳",
