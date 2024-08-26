@@ -1,9 +1,11 @@
 .v-table--density-default > .v-table__wrapper > table > tbody > tr > th,
 .v-table--density-default > .v-table__wrapper > table > thead > tr > th,
 .v-table--density-default > .v-table__wrapper > table > tfoot > tr > th {
-  height: 2.5rem !important; //calc(var(--v-table-header-height) + 0px);
+  height: 3rem !important; //calc(var(--v-table-header-height) + 0px);
 }
 .v-table {
   border-radius: 0 !important;
   font-size: 1em !important;
+  line-height: 1.25rem !important;
+  color: $gray2 !important;
 }
