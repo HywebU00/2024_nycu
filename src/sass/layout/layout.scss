@@ -18,6 +18,8 @@
   &.v-navigation-drawer {
     background-color: unset;
     border: 0;
+    height: calc(100% - 80px) !important;
+    top: 80px !important;
   }
   @include screen('notebook') {
     padding-left: rem(0);
@@ -134,9 +136,9 @@
   }
   h1 {
     color: #fff;
-    font-size: 1.6rem;
-    letter-spacing: 0.25rem;
-    margin-left: 1rem;
+    font-size: 1.8rem;
+    letter-spacing: 0.5rem;
+    margin-left: 1.5rem;
     font-weight: 600;
     span {
       padding-left: 2rem;
@@ -200,9 +202,8 @@
   letter-spacing: 0.15rem;
   > div {
     padding: 0.5rem 1rem;
-    min-width: rem(80);
+    min-width: 100px;
     text-align: center;
-    font-size: 0.9rem;
     border-radius: 1.25rem;
     line-height: 1rem;
     display: flex;
@@ -299,11 +300,15 @@
   background-attachment: fixed !important;
 }
 .v-app-bar {
+  .v-toolbar__content {
+    height: 80px !important;
+  }
   &.v-toolbar {
     background: url('@/assets/images/header.jpg') no-repeat !important;
     box-shadow: none !important;
     background-size: cover !important;
     background-position: center right;
+    justify-content: center;
   }
 }
 
@@ -335,6 +340,7 @@ header {
 }
 
 .v-main {
+  padding-top: 80px !important;
   > div {
     background: #f5fafe;
     border-radius: 16px;
@@ -367,16 +373,19 @@ header {
       font-weight: 800;
       + .dateInfo {
         margin-top: -1rem;
+        font-weight: 500;
         font-size: 0.9rem;
       }
     }
   }
 }
 .subtitle {
-  font-size: rem(18);
+  font-size: rem(20);
   position: relative;
   padding-left: 1.2rem;
-  border-bottom: $primary 2px solid;
+  border-bottom: 2px solid;
+  border-image-source: linear-gradient(to right, #1444ae, #06aafc);
+  border-image-slice: 1;
   padding-bottom: 0.3rem;
 
   &::before {
@@ -386,7 +395,7 @@ header {
     background-size: contain;
     width: 12px;
     height: 24px;
-    top: 2px;
+    top: 5px;
     left: 0;
   }
   .moreBtn {
@@ -399,9 +408,13 @@ header {
       font-size: 1.5rem;
     }
   }
+  .v-chip {
+    margin-bottom: 0.25rem;
+  }
 }
 .underlineTitle {
   border-bottom: 1px solid $primary;
+  font-size: 1rem !important;
   + .checkboxGrp {
     line-height: 1rem;
     .v-input--density-default {

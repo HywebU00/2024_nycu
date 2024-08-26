@@ -14,7 +14,7 @@
     </template>
     <v-card min-width="300">
       <v-date-picker color="gray" hide-header v-model="date"></v-date-picker>
-      <v-card-actions class="d-flex justify-center">
+      <v-card-actions class="d-flex justify-center pb-4">
         <v-btn
           variant="flat"
           class="bg-light-gradient elevation-3 text-subtitle-2 text-gray"

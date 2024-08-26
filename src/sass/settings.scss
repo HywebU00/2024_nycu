@@ -4,6 +4,11 @@
 @import '@/sass/common/mixins/_mediaquery.scss';
 @import '@/sass/common/mixins/_text.scss';
 
+//vuetifyCSS
+@import '@/sass/components/VListItem.scss';
+@import '@/sass/components/VTable.scss';
+@import '@/sass/components/VChip.scss';
+@import '@/sass/components/VBtn.scss';
 //customizingComponents
 @import '@/sass/customizingComponents/form.scss';
 @import '@/sass/customizingComponents/table.scss';
@@ -17,7 +22,3 @@
 
 //layout
 @import '@/sass/layout/layout.scss';
-
-//vuetifyCSS
-@import '@/sass/components/VListItem.scss';
-@import '@/sass/components/VTable.scss';

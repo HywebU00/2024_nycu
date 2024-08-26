@@ -59,12 +59,12 @@ table {
   .v-select,
   .v-input {
     .v-input__control {
-      font-size: 0.9rem;
+      // font-size: 0.9rem;
       option,
       .v-label,
       .v-field,
       .v-field__input {
-        font-size: 0.9rem;
+        // font-size: 0.9rem;
       }
     }
   }
@@ -79,6 +79,9 @@ table {
     }
     .v-input__control {
       width: 65px;
+    }
+    .v-btn__content {
+      font-size: 1rem;
     }
   }
 }
@@ -127,5 +130,6 @@ table {
 .smallBtn {
   .v-btn__content {
     margin-bottom: 0.2rem;
+    font-size: 0.9rem;
   }
 }
