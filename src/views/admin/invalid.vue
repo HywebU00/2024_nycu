@@ -57,13 +57,21 @@
           <template v-slot:item.cancel="{ item }">
             <v-dialog max-width="420">
               <template v-slot:activator="{ props: activatorProps }">
-                <v-btn
+                <!-- <v-btn
                   v-bind="activatorProps"
                   color="gray smallBtn"
                   variant="outlined"
                   prepend-icon="mdi-trash-can-outline"
                 >
                   作廢
+                </v-btn> -->
+                <v-btn
+                  v-bind="activatorProps"
+                  color="gray"
+                  variant="text"
+                  icon="mdi-trash-can-outline"
+                  class="ma-2"
+                >
                 </v-btn>
               </template>
 
