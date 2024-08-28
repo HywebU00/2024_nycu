@@ -21,7 +21,6 @@
         </template>
         <v-card class="pa-2">
           <v-btn
-            size="small"
             variant="outlined"
             class="mb-2"
             block
@@ -29,7 +28,7 @@
             v-bind="activatorProps"
             >查閱</v-btn
           >
-          <v-btn size="small" variant="outlined" block color="gray">停用</v-btn>
+          <v-btn variant="outlined" block color="gray">停用</v-btn>
         </v-card>
       </v-menu>
     </template>

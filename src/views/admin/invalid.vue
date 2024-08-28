@@ -61,7 +61,6 @@
                   v-bind="activatorProps"
                   color="gray smallBtn"
                   variant="outlined"
-                  size="small"
                   prepend-icon="mdi-trash-can-outline"
                 >
                   作廢

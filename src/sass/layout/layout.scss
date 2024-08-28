@@ -158,11 +158,11 @@
   }
   @include screen('notebook') {
     .logo {
-      width: 60px;
-      margin-right: 0.5rem;
+      // width: 60px;
+      margin-right: 0.75rem;
     }
     h1 {
-      font-size: 1.2rem;
+      font-size: 1.5rem;
       margin-left: 0;
       span {
         &::before {
@@ -174,12 +174,11 @@
   @include screen('tablet') {
     margin-left: 0rem;
     h1 {
-      font-size: 1rem;
+      font-size: 1.25rem;
+      letter-spacing: normal;
       span {
-        display: block;
-        padding: 0;
         &::before {
-          display: none;
+          top: 5px;
         }
       }
     }
@@ -188,7 +187,32 @@
     .logo {
       display: none;
     }
+    h1 {
+      span {
+        padding-left: 1.25rem;
+        &::before {
+          left: 8px;
+        }
+      }
+    }
   }
+  @media screen and (max-width: 520px) {
+    h1 {
+      span {
+        display: block;
+        padding-left: 0;
+        &:before {
+          display: none;
+        }
+      }
+    }
+  }
+  // @include screen('xs_mobile') {
+  //   background-color: #008be6;
+  //   h1 {
+  //     font-size: 0.9rem;
+  //   }
+  // }
 }
 //使用者登入資訊
 .userInfo {
@@ -309,6 +333,9 @@
     background-size: cover !important;
     background-position: center right;
     justify-content: center;
+    @media screen and (max-width: 1200px) {
+      background-size: initial !important;
+    }
   }
 }
 
@@ -346,6 +373,7 @@ header {
     border-radius: 16px;
     margin: 0.5rem 1rem 1rem 1rem;
     > .v-container {
+      padding: 1rem 3rem;
       &:has(.content) {
         display: flex;
         flex-direction: column;
@@ -374,7 +402,7 @@ header {
       + .dateInfo {
         margin-top: -1rem;
         font-weight: 500;
-        font-size: 0.9rem;
+        font-size: 0.875rem;
       }
     }
   }
