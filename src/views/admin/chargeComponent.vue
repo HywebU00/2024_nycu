@@ -142,8 +142,7 @@
               <template v-slot:activator="{ props: activatorProps }">
                 <v-btn
                   variant="flat"
-                  class="bg-secondary-gradient elevation-3 text-subtitle-2"
-                  size="small"
+                  class="bg-secondary-gradient elevation-3"
                   prepend-icon="mdi-plus"
                   v-bind="activatorProps"
                   >新增收費項目</v-btn

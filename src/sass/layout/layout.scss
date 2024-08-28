@@ -89,9 +89,9 @@
     margin-left: 0.5rem;
     .v-list-item-title {
       line-height: 1.5em;
-      font-size: 1em;
+      font-size: 1.125rem;
       color: $primary;
-      font-weight: 600;
+      font-weight: 700;
     }
   }
   .drawerBtn {
@@ -118,6 +118,8 @@
   color: #fff !important;
   font-size: rem(16) !important;
   font-weight: 600;
+  min-width: 110px !important;
+  border-radius: 1.5rem !important;
   margin-bottom: 1.5rem;
 }
 .searchContent {
@@ -400,9 +402,9 @@ header {
       font-size: 1.75rem;
       font-weight: 800;
       + .dateInfo {
-        margin-top: -1rem;
+        margin-top: -1.5rem;
         font-weight: 500;
-        font-size: 0.875rem;
+        margin-bottom: 1rem;
       }
     }
   }

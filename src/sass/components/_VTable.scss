@@ -1,7 +1,11 @@
+.v-theme--default {
+  --v-table-row-height: 64px !important;
+}
+
 .v-table--density-default > .v-table__wrapper > table > tbody > tr > th,
 .v-table--density-default > .v-table__wrapper > table > thead > tr > th,
 .v-table--density-default > .v-table__wrapper > table > tfoot > tr > th {
-  height: 3rem !important; //calc(var(--v-table-header-height) + 0px);
+  height: --v-table-row-height;
 }
 .v-table {
   border-radius: 0 !important;

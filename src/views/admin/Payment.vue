@@ -68,11 +68,11 @@
         </v-card-title>
         <v-row>
           <v-col class="justify-end d-flex mt-3" cols="12">
-            <p class="text-subtitle-2 text-gray">拖拉以調整排序</p>
+            <p class="text-gray">拖拉以調整排序</p>
           </v-col>
           <paymentTable></paymentTable>
           <v-col class="mb-5 justify-end d-flex" cols="12">
-            <p class="text-body-2 text-primary">檔案類型：* xlsx</p>
+            <p class="text-primary">檔案類型：* xlsx</p>
           </v-col>
         </v-row>
         <div>

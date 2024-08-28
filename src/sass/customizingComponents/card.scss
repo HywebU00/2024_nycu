@@ -187,15 +187,19 @@
     top: rem(24);
     position: absolute;
     right: rem(24);
+    .v-btn__content {
+      font-size: 1rem;
+    }
   }
 
   .info,
   .infoList {
-    font-size: 0.8rem;
     font-weight: 400;
+    margin-bottom: 0.25rem;
   }
   .paymentList {
     .v-list-item {
+      min-height: 4rem;
       border-bottom: 1px solid lighten($gray3, 35%);
     }
   }

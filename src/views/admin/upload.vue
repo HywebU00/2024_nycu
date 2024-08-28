@@ -10,7 +10,7 @@
         <v-row>
           <v-col class="justify-space-between d-flex mt-3" cols="12">
             <div
-              class="text-subtitle-2 text-primary underlineTitle ml-0 ml-md-6"
+              class="text-subtitle-2 text-primary underlineTitle ml-0 ml-md-5"
             >
               下載繳費單格式檔
             </div>
@@ -29,12 +29,8 @@
               </div>
             </v-col>
             <v-col cols="12" class="d-flex justify-center">
-              <v-btn class="bg-secondary-gradient btn elevation-0"
-                >選擇檔案</v-btn
-              >
-              <v-btn class="bg-secondary-gradient btn elevation-0"
-                >重新上傳</v-btn
-              >
+              <v-btn class="bg-gray-gradient btn elevation-0">選擇檔案</v-btn>
+              <v-btn class="bg-gray-gradient btn elevation-0">重新上傳</v-btn>
             </v-col>
           </v-row>
         </div>
