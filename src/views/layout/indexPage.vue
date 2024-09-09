@@ -110,8 +110,18 @@ export default {
           note: "",
         },
         {
-          name: "",
-          link: "",
+          name: "待繳費項目",
+          link: "https://hywebu00.github.io/2024_nycu/#/front",
+          note: "",
+        },
+        {
+          name: "繳費資訊",
+          link: "https://hywebu00.github.io/2024_nycu/#/front/info",
+          note: "",
+        },
+        {
+          name: "個人資料",
+          link: "https://hywebu00.github.io/2024_nycu/#/front/userinfo",
           note: "",
         },
       ],

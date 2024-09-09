@@ -85,8 +85,20 @@ const routes = [
         component: () => import("@/views/front/cardComponent.vue"),
       },
       {
+        path: "/front/info",
+        component: () => import("@/views/front/paymentinfoComponent.vue"),
+      },
+      {
+        path: "/front/userinfo",
+        component: () => import("@/views/front/userinfoComponent.vue"),
+      },
+      {
         path: "/front/component",
         component: () => import("@/views/front/component.vue"),
+      },
+      {
+        path: "/front/code",
+        component: () => import("@/views/front/codeComponent.vue"),
       },
     ],
   },

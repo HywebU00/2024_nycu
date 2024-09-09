@@ -1,6 +1,28 @@
 <template>
   <v-container class="container">
-    <h2 class="text-primary title">繳費資訊</h2>
+    <h2 class="text-primary title">待繳費項目</h2>
+    <p class="text-gray dateInfo">
+      僅保留六個月內繳費記錄，超過六個月以上請至歷史繳費記錄查詢
+    </p>
+    <div class="d-flex my-5">
+      <v-text-field
+        label="請輸入查詢關鍵字"
+        density="compact"
+        single-line
+        hide-details="auto"
+      ></v-text-field>
+      <v-btn class="bg-secondary-gradient px-6" prepend-icon="mdi-magnify"
+        >搜尋</v-btn
+      >
+    </div>
+    <v-sheet class="informationBlock mb-3">
+      <div class="title">合併帳單說明：</div>
+      <ul>
+        <li>限繳費期限內之帳單合併繳費</li>
+        <li>限相同繳費方式之繳費單合併帳單</li>
+        <li>帳單合併後無法解除綁定</li>
+      </ul>
+    </v-sheet>
     <!-- 查詢區塊 start -->
     <v-btn
       class="mr-0 ml-auto bg-secondary-gradient searchBtn"
@@ -121,544 +143,181 @@
     <!-- tablet 卡片列 start -->
     <div class="mb-5">
       <v-card class="elevation-0" color="transparent">
-        <v-card-title class="pa-0 dataTableTitle mb-7">
+        <v-card-title class="pa-0 dataTableTitle mb-3">
           <h4 class="text-primary subtitle d-flex">繳費明細確認</h4>
         </v-card-title>
-        <dataTable></dataTable>
-        <v-card-title class="pa-0 dataTableTitle mb-3">
-          <h4 class="text-primary subtitle d-flex">
-            計畫編號 N1130145 - 業管單位 -共4筆
-          </h4>
-          <v-select
-            class="mb-3 ml-auto text-gray bg-white"
-            width="200"
-            label="多筆歸戶"
-            single-line
-            density="compact"
-            hide-details="none"
-            variant="outlined"
-            :items="['選項ㄧ', '選項二', '選項三']"
-          ></v-select>
-        </v-card-title>
-        <v-row>
-          <v-col class="mb-3 justify-end d-flex" cols="12">
-            <v-dialog class="dialogCard" max-width="800" scrollable>
-              <template v-slot:activator="{ props: activatorProps }">
-                <v-btn
-                  variant="flat"
-                  class="bg-secondary-gradient elevation-3 text-subtitle-2"
-                  size="small"
-                  prepend-icon="mdi-plus"
-                  v-bind="activatorProps"
-                  >新增收費項目</v-btn
+        <v-row class="px-2">
+          <v-col class="justify-end d-flex align-center" cols="12">
+            <v-menu transition="slide-x-transition">
+              <template v-slot:activator="{ props }">
+                <v-icon
+                  v-bind="props"
+                  class="text-gary"
+                  icon="mdi-information-outline"
+                  color="gray"
                 >
+                </v-icon>
               </template>
-              <template v-slot:default="{ isActive }">
-                <v-card title="新增/編輯收費項目">
-                  <div class="py-0 editBtn">
-                    <v-btn
-                      color="primary"
-                      prepend-icon="mdi-square-edit-outline"
-                      variant="text"
-                      >編輯</v-btn
-                    >
+              <v-sheet class="infoCard pa-2 ma-2">
+                <p>
+                  說明說明說明說明說明說明說明說明說明說明說明說明說明說明說明說明說明說明說明說明說明說明
+                </p>
+              </v-sheet>
+            </v-menu>
+            <v-btn variant="flat" class="bg-secondary-gradient elevation-3 mx-2"
+              >合併帳單</v-btn
+            >
+            <p class="text-gray">點擊收據號碼下載</p>
+          </v-col>
+
+          <v-data-table
+            class="dataTable"
+            show-select
+            v-model:page="page"
+            :headers="tableHeaders"
+            :items="tableData"
+            item-value="num"
+            :items-per-page="itemsPerPage"
+            hide-default-footer
+          >
+            <template v-slot:item.type="{ item }">
+              <v-tooltip :text="item.type">
+                <template v-slot:activator="{ props }">
+                  <div v-bind="props" class="text-truncate truncateStyle">
+                    {{ item.type }}
                   </div>
-                  <v-card-text class="px-4">
-                    <div>
-                      <h4 class="text-primary subtitle ml-3">
-                        收費項目
-                        <v-chip
-                          class="ml-2 font-weight-bold"
-                          variant="elevated"
-                          size="small"
-                          color="secondary"
-                        >
-                          申請停用
-                        </v-chip>
-                      </h4>
-                      <div class="ml-4 mt-2 text-gray info">
-                        申請時間:2024/06/07 13:00
+                </template>
+              </v-tooltip>
+            </template>
+            <template v-slot:item.title="{ item }">
+              <v-chip
+                v-if="item.title.length > 1"
+                class="chip"
+                variant="elevated"
+                size="small"
+                color="secondary"
+              >
+                申請停用
+              </v-chip>
+              <div
+                v-for="(i, index) in item.title"
+                :key="index"
+                class="tableTitle text-start my-2"
+              >
+                {{ i }}
+              </div>
+            </template>
+            <template v-slot:item.qty="{ item }">
+              <v-select
+                width="150"
+                label="下拉式選單"
+                single-line
+                density="compact"
+                hide-details="auto"
+                :items="['選項ㄧ', '選項二', '選項三']"
+              ></v-select>
+            </template>
+            <template v-slot:item.pay="{ item }">
+              <v-btn
+                color="gray"
+                variant="text"
+                icon="mdi-credit-card-outline"
+                class="ma-2"
+              >
+              </v-btn>
+            </template>
+            <template v-slot:item.status="{ item }">
+              <v-dialog max-width="420">
+                <template v-slot:activator="{ props: activatorProps }">
+                  <v-btn
+                    v-bind="activatorProps"
+                    class="my-2 bg-secondary-gradient"
+                    block
+                    >解除併更</v-btn
+                  >
+                </template>
+                <template v-slot:default="{ isActive }">
+                  <v-card>
+                    <v-card-text class="pa-12 text-center">
+                      確認解除合併帳單？
+                    </v-card-text>
+                    <v-card-actions class="d-flex justify-center">
+                      <div class="pa-4 pt-2">
+                        <v-btn
+                          text="取消"
+                          variant="flat"
+                          class="bg-light-gradient text-gray elevation-3 btn"
+                          @click="isActive.value = false"
+                        ></v-btn>
+                        <v-btn
+                          class="bg-secondary-gradient elevation-3 btn"
+                          text="確定"
+                          variant="flat"
+                          @click="isActive.value = false"
+                        ></v-btn>
                       </div>
-                      <v-form>
-                        <v-container>
-                          <v-row class="formGrp">
-                            <v-col class="pb-0" cols="12" lg="">
-                              <label class="text-gray font-weight-bold" for=""
-                                >申請單位</label
-                              >
-                            </v-col>
-                            <v-col cols="12" class="pt-0">
-                              <v-text-field
-                                label="文字標準表單"
-                                density="compact"
-                                single-line
-                                hide-details="auto"
-                              ></v-text-field>
-                            </v-col>
-                          </v-row>
-                          <v-row class="formGrp">
-                            <v-col class="pb-0" cols="12" lg="">
-                              <label class="text-gray font-weight-bold" for=""
-                                >申請代碼</label
-                              >
-                            </v-col>
-                            <v-col cols="12" class="pt-0">
-                              <v-text-field
-                                label="文字標準表單"
-                                density="compact"
-                                single-line
-                                hide-details="auto"
-                              ></v-text-field>
-                            </v-col>
-                          </v-row>
-                          <v-row class="formGrp">
-                            <v-col class="pb-0" cols="12" lg="">
-                              <label class="text-gray font-weight-bold" for=""
-                                >申請人姓名</label
-                              >
-                            </v-col>
-                            <v-col cols="12" class="pt-0">
-                              <v-text-field
-                                label="文字標準表單"
-                                density="compact"
-                                single-line
-                                hide-details="auto"
-                              ></v-text-field>
-                            </v-col>
-                          </v-row>
-                          <v-row class="formGrp">
-                            <v-col class="pb-0" cols="12" lg="">
-                              <label class="text-gray font-weight-bold" for=""
-                                >電話/分機</label
-                              >
-                            </v-col>
-                            <v-col cols="12" class="pt-0">
-                              <v-text-field
-                                label="文字標準表單"
-                                density="compact"
-                                single-line
-                                hide-details="auto"
-                              ></v-text-field>
-                            </v-col>
-                          </v-row>
-                          <v-row class="formGrp">
-                            <v-col class="pb-0" cols="12" lg="">
-                              <label class="text-gray font-weight-bold" for=""
-                                >Email</label
-                              >
-                            </v-col>
-                            <v-col cols="12" class="pt-0">
-                              <v-text-field
-                                label="文字標準表單"
-                                density="compact"
-                                single-line
-                                hide-details="auto"
-                              ></v-text-field>
-                            </v-col>
-                          </v-row>
-                          <v-row class="formGrp">
-                            <v-col class="pb-0" cols="12" lg="">
-                              <label
-                                class="text-gray font-weight-bold mb-3 d-block"
-                                for=""
-                                >收費項目說明
-                                <abbr
-                                  class="necessary"
-                                  title="為必填(選)欄位,不能為空白。"
-                                  >*</abbr
-                                ></label
-                              >
-                            </v-col>
-                            <v-col cols="12" class="pt-0">
-                              <v-textarea
-                                hide-details="auto"
-                                variant="outlined"
-                              ></v-textarea>
-                            </v-col>
-                          </v-row>
-                          <v-row class="formGrp">
-                            <v-col class="pb-0" cols="12" lg="">
-                              <label class="text-gray font-weight-bold" for=""
-                                >收費性質
-                                <abbr
-                                  class="necessary"
-                                  title="為必填(選)欄位,不能為空白。"
-                                  >*</abbr
-                                ></label
-                              >
-                            </v-col>
-                            <v-col cols="12" class="pt-0">
-                              <v-select
-                                label="下拉式選單"
-                                single-line
-                                density="compact"
-                                hide-details="auto"
-                                :items="['選項ㄧ', '選項二', '選項三']"
-                              ></v-select>
-                            </v-col>
-                          </v-row>
-                          <v-row class="formGrp">
-                            <v-col>
-                              <label
-                                class="text-gray font-weight-bold mb-3 d-block"
-                                for=""
-                                >是否允許繳款人自行繳費？</label
-                              ><v-radio-group
-                                inline
-                                hide-details="auto"
-                                color="secondary"
-                              >
-                                <v-radio label="是" value="1"></v-radio>
-                                <v-radio
-                                  label="否"
-                                  value="2"
-                                ></v-radio> </v-radio-group
-                            ></v-col>
-                          </v-row>
-                          <v-row class="formGrp checkboxGrp">
-                            <v-col class="">
-                              <label
-                                class="text-gray font-weight-bold mb-3 d-block"
-                                for=""
-                                >收費方式</label
-                              >
-                              <v-row class="mt-2">
-                                <v-col
-                                  cols="12"
-                                  lg="auto"
-                                  class="item py-0 mb-3"
-                                >
-                                  <v-checkbox
-                                    color="white"
-                                    label="eATM轉帳"
-                                    hide-details="auto"
-                                  ></v-checkbox>
-                                </v-col>
-                                <v-col
-                                  cols="12"
-                                  lg="auto"
-                                  class="item py-0 mb-3"
-                                >
-                                  <v-checkbox
-                                    color="white"
-                                    label="線上信用卡繳費"
-                                    hide-details="auto"
-                                  ></v-checkbox>
-                                </v-col>
-                                <v-col
-                                  cols="12"
-                                  lg="auto"
-                                  class="item py-0 mb-3"
-                                >
-                                  <v-checkbox
-                                    color="white"
-                                    label="超商繳款"
-                                    hide-details="auto"
-                                  ></v-checkbox>
-                                </v-col>
-                                <v-col
-                                  cols="12"
-                                  lg="auto"
-                                  class="item py-0 mb-3"
-                                >
-                                  <v-checkbox
-                                    color="white"
-                                    label="掃碼支付"
-                                    hide-details="auto"
-                                  ></v-checkbox>
-                                </v-col>
-                                <v-col
-                                  cols="12"
-                                  lg="auto"
-                                  class="item py-0 mb-3"
-                                >
-                                  <v-checkbox
-                                    color="white"
-                                    label="出納臨櫃繳款"
-                                    hide-details="auto"
-                                  ></v-checkbox>
-                                </v-col>
-                                <v-col
-                                  cols="12"
-                                  lg="auto"
-                                  class="item py-0 mb-3"
-                                >
-                                  <v-checkbox
-                                    color="white"
-                                    label="悠遊卡"
-                                    hide-details="auto"
-                                  ></v-checkbox>
-                                </v-col>
-                                <v-col
-                                  cols="12"
-                                  lg="auto"
-                                  class="py-0 mb-3 item"
-                                >
-                                  <div class="d-flex checkboxHasSelect">
-                                    <v-checkbox
-                                      color="white"
-                                      label="ATM轉帳"
-                                      hide-details="auto"
-                                      class="pr-0"
-                                    >
-                                    </v-checkbox>
-                                    <!-- variant="outlined" -->
-                                    <v-select
-                                      label="下拉式選單"
-                                      single-line
-                                      density="compact"
-                                      width="180"
-                                      class="pl-0"
-                                      hide-details="auto"
-                                      :items="['選項ㄧ', '選項二', '選項三']"
-                                    ></v-select>
-                                  </div>
-                                </v-col>
-                              </v-row>
-                            </v-col>
-                          </v-row>
-                          <v-row class="formGrp">
-                            <v-col class="pb-0" cols="12" lg="">
-                              <label class="text-gray font-weight-bold" for=""
-                                >電子收據</label
-                              >
-                            </v-col>
-                            <v-col cols="12" class="pt-0">
-                              <v-select
-                                label="下拉式選單"
-                                single-line
-                                density="compact"
-                                hide-details="auto"
-                                :items="['選項ㄧ', '選項二', '選項三']"
-                              ></v-select>
-                            </v-col>
-                          </v-row>
-                          <v-row class="formGrp">
-                            <v-col class="pb-0" cols="12" lg="">
-                              <label class="text-gray font-weight-bold" for=""
-                                >審核單位</label
-                              >
-                            </v-col>
-                            <v-col cols="12" class="pt-0">
-                              <v-select
-                                label="下拉式選單"
-                                single-line
-                                density="compact"
-                                hide-details="auto"
-                                :items="['選項ㄧ', '選項二', '選項三']"
-                              ></v-select>
-                            </v-col>
-                          </v-row>
-                          <v-row class="formGrp">
-                            <v-col>
-                              <label
-                                class="text-gray font-weight-bold mb-3 d-block"
-                                for=""
-                                >固定繳費金額</label
-                              ><v-radio-group
-                                inline
-                                hide-details="auto"
-                                color="secondary"
-                              >
-                                <v-radio label="是" value="1"></v-radio>
-                                <v-text-field
-                                  label="文字標準表單"
-                                  density="compact"
-                                  single-line
-                                  hide-details="auto"
-                                ></v-text-field>
-                                <v-radio
-                                  label="否"
-                                  value="2"
-                                ></v-radio> </v-radio-group
-                            ></v-col>
-                          </v-row>
-                          <v-row class="formGrp">
-                            <v-col class="pb-0" cols="12" lg="">
-                              <label
-                                class="text-gray font-weight-bold d-block mb-3"
-                                for=""
-                                >停用說明
-                                <span class="ml-2 text-gray info"
-                                  >退回時間:2024/06/07 13:00</span
-                                >
-                              </label>
-                            </v-col>
-                            <v-col cols="12" class="pt-0">
-                              <v-textarea
-                                hide-details="auto"
-                                variant="outlined"
-                              ></v-textarea>
-                            </v-col>
-                          </v-row>
-                        </v-container>
-                      </v-form>
-                      <h4 class="text-primary subtitle my-3 ml-3">
-                        主計室確認
-                      </h4>
-                      <v-form>
-                        <v-container>
-                          <v-row class="formGrp">
-                            <v-col class="pb-0" cols="12" lg="">
-                              <label class="text-gray font-weight-bold" for=""
-                                >主計經費編號</label
-                              >
-                            </v-col>
-                            <v-col cols="12" class="pt-0">
-                              <v-text-field
-                                label="文字標準表單"
-                                density="compact"
-                                single-line
-                                hide-details="auto"
-                              ></v-text-field>
-                            </v-col>
-                          </v-row>
-                          <v-row class="formGrp">
-                            <v-col class="pb-0" cols="12" lg="">
-                              <label class="text-gray font-weight-bold" for=""
-                                >會計科目</label
-                              >
-                            </v-col>
-                            <v-col cols="12" class="pt-0">
-                              <v-text-field
-                                label="文字標準表單"
-                                density="compact"
-                                single-line
-                                hide-details="auto"
-                              ></v-text-field>
-                            </v-col>
-                          </v-row>
-                        </v-container>
-                      </v-form>
-                      <h4 class="text-primary subtitle my-3 ml-3">
-                        出納組確認
-                      </h4>
-                      <v-form>
-                        <v-container>
-                          <v-row class="formGrp">
-                            <v-col class="pb-0" cols="12" lg="">
-                              <label class="text-gray font-weight-bold" for=""
-                                >校區別</label
-                              >
-                            </v-col>
-                            <v-col cols="12" class="pt-0">
-                              <v-select
-                                label="下拉式選單"
-                                single-line
-                                density="compact"
-                                hide-details="auto"
-                                :items="['選項ㄧ', '選項二', '選項三']"
-                              ></v-select>
-                            </v-col>
-                          </v-row>
-                          <v-row class="formGrp">
-                            <v-col class="pb-0" cols="12" lg="">
-                              <label class="text-gray font-weight-bold" for=""
-                                >銀行帳戶</label
-                              >
-                            </v-col>
-                            <v-col cols="12" class="pt-0">
-                              <v-text-field
-                                label="文字標準表單"
-                                density="compact"
-                                single-line
-                                hide-details="auto"
-                              ></v-text-field>
-                            </v-col>
-                          </v-row>
-                          <v-row class="formGrp">
-                            <v-col class="pb-0" cols="12" lg="">
-                              <label class="text-gray font-weight-bold" for=""
-                                >特店代號</label
-                              >
-                            </v-col>
-                            <v-col cols="12" class="pt-0">
-                              <v-select
-                                label="下拉式選單"
-                                single-line
-                                density="compact"
-                                hide-details="auto"
-                                :items="['選項ㄧ', '選項二', '選項三']"
-                              ></v-select>
-                            </v-col>
-                          </v-row>
-                          <v-row class="formGrp">
-                            <v-col class="pb-0" cols="12" lg="">
-                              <label class="text-gray font-weight-bold" for=""
-                                >企業識別碼</label
-                              >
-                            </v-col>
-                            <v-col cols="12" class="pt-0">
-                              <v-select
-                                label="下拉式選單"
-                                single-line
-                                density="compact"
-                                hide-details="auto"
-                                :items="['選項ㄧ', '選項二', '選項三']"
-                              ></v-select>
-                            </v-col>
-                          </v-row>
-                          <v-row class="formGrp">
-                            <v-col>
-                              <label
-                                class="text-gray font-weight-bold mb-3 d-block"
-                                for=""
-                                >是否採總認列</label
-                              ><v-radio-group
-                                inline
-                                hide-details="auto"
-                                color="secondary"
-                              >
-                                <v-radio label="是" value="1"></v-radio>
-                                <v-radio
-                                  label="否"
-                                  value="2"
-                                ></v-radio> </v-radio-group
-                            ></v-col>
-                          </v-row>
-                        </v-container>
-                      </v-form>
-                    </div>
-                  </v-card-text>
-                  <v-card-actions class="d-block">
-                    <div class="d-flex justify-end px-4">
-                      <ul class="infoList">
-                        <li class="text-gray">
-                          新增人員系統管理者(admin)新增時間2023/02/08 16:56:12
-                        </li>
-                        <!-- <li class="text-gray">
-                        異動人員系統管理者(admin)異動時間2023/06/27 11:30:25
-                      </li> -->
-                      </ul>
-                    </div>
-                    <!-- <v-spacer></v-spacer> -->
-                    <div class="d-flex justify-center pa-4 pt-2">
-                      <v-btn
-                        text="暫存"
-                        variant="flat"
-                        class="bg-light-gradient text-gray elevation-3 btn"
-                        @click="isActive.value = false"
-                      ></v-btn>
-                      <v-btn
-                        class="bg-secondary-gradient elevation-3 btn"
-                        text="送出"
-                        variant="flat"
-                        @click="isActive.value = false"
-                      ></v-btn>
-                      <v-btn
-                        text="關閉"
-                        class="bg-light-gradient text-gray elevation-3 btn"
-                        variant="flat"
-                        @click="isActive.value = false"
-                      ></v-btn>
-                    </div>
-                  </v-card-actions>
-                </v-card>
-              </template>
-            </v-dialog>
+                    </v-card-actions>
+                  </v-card>
+                </template>
+              </v-dialog>
+              <v-btn class="my-2 bg-light-gradient text-gray" block>變更</v-btn>
+              <!-- 解除併更 disabled 樣式start -->
+              <v-btn
+                class="my-2 bg-secondary text-white"
+                disabled
+                variant="flat"
+                block
+                >變更</v-btn
+              >
+              <!-- 解除併更 disabled 樣式end -->
+              <!-- 灰色併更 disabled 樣式start -->
+              <v-btn class="my-2 bg-light-gradient" disabled block>變更</v-btn>
+              <!-- 灰色併更 disabled 樣式end -->
+            </template>
+            <template v-slot:item.download="{ item }">
+              <div
+                v-for="(i, index) in item.download"
+                :key="index"
+                class="text-decoration-underline text-gray cursor-pointer mb-1"
+              >
+                {{ i }}
+                <!-- <router-link to="/">Home</router-link> -->
+              </div>
+            </template>
+            <template v-slot:bottom>
+              <div class="d-flex align-center justify-center pagination">
+                <span
+                  >共{{ tableData.length }}筆資料，第1/{{
+                    pageCount || 1
+                  }}頁，每頁顯示 </span
+                >
+                <v-text-field
+                  :model-value="itemsPerPage"
+                  class="mx-2"
+                  max="15"
+                  density="compact"
+                  min="1"
+                  type="number"
+                  hide-details
+                  @update:model-value="itemsPerPage = parseInt($event, 10)"
+                ></v-text-field>
+                <span>筆</span>
+              </div>
+              <div class="text-center mt-6">
+                <v-pagination
+                  active-color="gray"
+                  color="gray"
+                  size="small"
+                  v-model="page"
+                  :length="pageCount"
+                ></v-pagination>
+              </div>
+            </template>
+          </v-data-table>
+          <v-col class="mb-5 justify-end d-flex" cols="12">
+            <p class="text-primary">檔案類型：* xlsx</p>
           </v-col>
         </v-row>
-        <dataTable></dataTable>
         <div class="d-flex justify-center pa-4 pt-2">
           <v-btn
             text="取消"
@@ -680,7 +339,6 @@
 </template>
 
 <script>
-import dataTable from "@/components/dataTable.vue";
 //載入 Ｖuetify組合 日期選擇器
 import datepickerModalVue from "@/components/datepickerModal.vue";
 export default {
@@ -694,6 +352,8 @@ export default {
     visible: false,
     expand: false,
     //table data
+    itemsPerPage: 3,
+    selected: [],
     data: [
       {
         id: "1",
@@ -726,11 +386,103 @@ export default {
         status: "待審",
       },
     ],
+    // table
+    tableHeaders: [
+      {
+        align: "center",
+        width: "",
+        key: "date",
+        sortable: false,
+        title: "開立日期",
+      },
+      { title: "繳費單編號", key: "num", align: "center", sortable: false },
+      {
+        title: "繳費項目",
+        key: "title",
+        sortable: false,
+        align: "center",
+      },
+      {
+        title: "繳費金額",
+        key: "sum",
+        align: "end",
+        sortable: false,
+      },
+      {
+        title: "可繳款方式",
+        key: "type",
+        align: "center",
+        sortable: false,
+      },
+      {
+        title: "繳費期限",
+        key: "date",
+        align: "center",
+        sortable: false,
+      },
+      {
+        title: "數量",
+        key: "qty",
+        align: "center",
+        sortable: false,
+      },
+      {
+        title: "付款",
+        key: "pay",
+        align: "center",
+        sortable: false,
+      },
+      {
+        title: "繳費方式",
+        key: "status",
+        align: "center",
+        sortable: false,
+      },
+      {
+        title: "收據下載",
+        key: "download",
+        align: "center",
+        sortable: false,
+      },
+    ],
+    tableData: [
+      {
+        date: "2024/06/01",
+        num: "N1130606",
+        title: ["泳訓班個人報名費"],
+        sum: 10000,
+        type: "信,A,超...",
+        download: ["N12345678", "N22345678"],
+      },
+      {
+        date: "2024/06/02",
+        num: "N1130607",
+        title: ["籃球場租金"],
+        sum: 10000,
+        type: "信,A,超...",
+        download: ["N12345678"],
+      },
+      {
+        date: "2024/06/03",
+        num: "N1130608",
+        title: [
+          "113年5月 餐聽、超商、書局繳費通知單",
+          "113年5月 餐聽、超商、書局繳費通知單",
+        ],
+        sum: 10000,
+        type: "信,A,超... 餐聽、超商、書局繳費通知單餐聽、超商、書局繳費通知單",
+        download: ["N12345678"],
+      },
+    ],
   }),
   methods: {},
   components: {
-    dataTable,
     datepickerModalVue,
+  },
+  computed: {
+    pageCount() {
+      return Math.ceil(this.tableData.length / this.itemsPerPage);
+    },
   },
 };
 </script>

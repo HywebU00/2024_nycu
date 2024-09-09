@@ -12,6 +12,27 @@ table {
       flex: unset;
     }
   }
+  .truncateStyle {
+    max-width: 100px;
+  }
+  .tableTitle {
+    width: 200px;
+  }
+  .chip {
+    margin-top: 0.5rem;
+    display: flex;
+    width: fit-content;
+  }
+}
+.infoCard {
+  max-width: 200px !important;
+}
+.v-overlay {
+  &.v-tooltip {
+    .v-overlay__content {
+      max-width: 200px !important;
+    }
+  }
 }
 .dataTableTitle {
   position: relative;
@@ -131,5 +152,52 @@ table {
   .v-btn__content {
     margin-bottom: 0.2rem;
     font-size: 0.9rem;
+  }
+}
+.necessary {
+  color: $error;
+}
+.invoiceTable {
+  margin: 1.5rem 0;
+  table {
+    border-spacing: 0;
+    thead {
+      background: $gray-gradient;
+      color: #fff;
+      td {
+        padding: 0;
+      }
+    }
+    tbody {
+      tr {
+        &:nth-child(odd) {
+          background: $gray;
+        }
+      }
+    }
+    width: 100%;
+    tr {
+      height: 3rem;
+      border: 1px solid;
+    }
+    td {
+      text-align: center;
+
+      &.num {
+        text-align: end;
+        padding: 0 0.5rem;
+      }
+    }
+  }
+  .footer {
+    background: $gray;
+    td {
+      padding: 0 2rem;
+      text-align: end;
+      span {
+        margin-right: 1rem;
+        font-weight: 600;
+      }
+    }
   }
 }

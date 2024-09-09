@@ -86,6 +86,13 @@
     color: $error;
     text-decoration: none;
   }
+  .v-messages {
+    font-size: 0.875rem;
+
+    .v-messages__message {
+      line-height: 1rem;
+    }
+  }
 }
 .v-field--variant-filled .v-field__overlay {
   opacity: 0 !important;
@@ -106,7 +113,11 @@ input:-internal-autofill-selected {
     }
   }
 }
-
+.v-col.labelWidth {
+  width: 150px;
+  flex-basis: 150px;
+  flex-grow: unset;
+}
 .inputText-end {
   input {
     text-align: end;

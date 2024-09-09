@@ -1,0 +1,7 @@
+button {
+  &.bg-light-gradient {
+    &:disabled {
+      background: lighten($gray3, 25%) !important;
+    }
+  }
+}

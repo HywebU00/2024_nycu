@@ -438,6 +438,24 @@ header {
     margin-bottom: 0.25rem;
   }
 }
+.informationBlock {
+  padding: 1.5rem;
+  background: #edf1f4 !important;
+  border-radius: 0.5rem !important;
+  .title {
+    font-weight: 800;
+    color: $gray2;
+    margin-bottom: 0.5rem;
+  }
+  ul {
+    list-style: disc;
+    padding-left: 1.5rem;
+  }
+  li {
+    margin-bottom: 0.25rem;
+    color: $gray2;
+  }
+}
 .underlineTitle {
   border-bottom: 1px solid $primary;
   font-size: 1rem !important;
@@ -761,6 +779,7 @@ header {
             color: $gray2;
             opacity: 1;
           }
+
           .v-list-item__content {
             display: flex;
             flex-wrap: wrap;
@@ -774,7 +793,6 @@ header {
         .v-list-item--nav {
           padding-inline: 8px;
           padding-inline-start: 10px;
-          min-height: 60px !important;
         }
         .v-list-item__content {
           margin-left: 0;

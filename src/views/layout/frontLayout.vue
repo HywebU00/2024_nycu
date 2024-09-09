@@ -14,15 +14,13 @@
       </div>
       <!-- 平台logo end -->
       <!-- 使用者 登入視窗start -->
+      <template>
+        <v-card flat> </v-card>
+      </template>
       <div class="userInfo ml-auto">
         <div class="mr-3">中文/English</div>
-        <v-btn variant="flat" class="bg-secondary-gradient loginBtn"
-          ><span class="mb-1">登出</span
-          ><span class="material-symbols-outlined"> logout </span></v-btn
-        >
+        <div class="bg-secondary-gradient">您好</div>
       </div>
-      <!-- 使用者 登入視窗end -->
-      <!-- <functionNavigation /> -->
     </v-app-bar>
     <v-navigation-drawer
       v-model="drawer"
@@ -43,24 +41,17 @@
         <!-- 待繳費項目 start -->
         <v-list-group value="待繳費項目">
           <template v-slot:activator="{ props }">
-            <v-list-item v-bind="props" title="待繳費項目" color="primary">
+            <v-list-item
+              v-bind="props"
+              title="待繳費項目"
+              color="primary"
+              append-icon=""
+            >
               <span class="material-symbols-outlined text-primary mr-2">
                 price_change
               </span>
             </v-list-item>
           </template>
-          <v-list-item
-            title="網站管理1"
-            value="網站管理1"
-            @click="pushLink('')"
-          >
-          </v-list-item>
-          <v-list-item
-            title="網站管理2"
-            value="網站管理2"
-            @click="pushLink('')"
-          >
-          </v-list-item>
         </v-list-group>
         <!-- 待繳費項目 end -->
         <!-- 固定規費項目 start -->
@@ -71,6 +62,7 @@
               v-bind="props"
               title="固定規費項目"
               color="primary"
+              append-icon=""
               subtitle="文件申請、論匙遊失"
             >
               <!-- <span>文件申請、論匙遊失</span> -->
@@ -79,41 +71,22 @@
               </span>
             </v-list-item>
           </template>
-          <v-list-item
-            title="項目管理"
-            value="項目管理"
-            @click="pushLink('charge')"
-          >
-          </v-list-item>
-          <v-list-item
-            title="收費項目審核"
-            value="收費項目審核"
-            @click="pushLink('')"
-          >
-          </v-list-item>
         </v-list-group>
         <!-- 固定規費項目 end -->
         <!-- 捐款 start -->
         <v-list-group value="捐款">
           <template v-slot:activator="{ props }">
-            <v-list-item v-bind="props" title="捐款" color="primary">
+            <v-list-item
+              v-bind="props"
+              title="捐款"
+              color="primary"
+              append-icon=""
+            >
               <span class="material-symbols-outlined text-primary mr-2">
                 payments
               </span>
             </v-list-item>
           </template>
-          <v-list-item
-            title="會員管理1"
-            value="會員管理1"
-            @click="pushLink('')"
-          >
-          </v-list-item>
-          <v-list-item
-            title="會員管理2"
-            value="會員管理2"
-            @click="pushLink('')"
-          >
-          </v-list-item>
         </v-list-group>
         <!-- 捐款 end -->
         <!-- 繳費查詢與收據下載start -->
@@ -123,51 +96,51 @@
               v-bind="props"
               title="繳費查詢與收據下載"
               color="primary"
+              append-icon=""
             >
               <span class="material-symbols-outlined text-primary mr-2">
                 system_update_alt
               </span>
             </v-list-item>
           </template>
-          <v-list-item
-            title="系統管理1"
-            value="系統管理1"
-            @click="pushLink('')"
-          >
-          </v-list-item>
-          <v-list-item
-            title="系統管理2"
-            value="系統管理2"
-            @click="pushLink('')"
-          >
-          </v-list-item>
         </v-list-group>
         <!-- 繳費查詢與收據下載 end -->
-
         <!-- 歷史繳費記錄 start -->
         <v-list-group value="歷史繳費記錄">
           <template v-slot:activator="{ props }">
-            <v-list-item v-bind="props" title="歷史繳費記錄" color="primary">
+            <v-list-item
+              v-bind="props"
+              title="歷史繳費記錄"
+              color="primary"
+              append-icon=""
+            >
               <span class="material-symbols-outlined text-primary mr-2">
                 receipt_long
               </span>
             </v-list-item>
           </template>
-          <v-list-item
-            title="繳費單維護與通知"
-            value="繳費單維護與通知"
-            @click="pushLink('')"
-          >
-          </v-list-item>
-          <v-list-item
-            title="批次建立管理"
-            value="批次建立管理"
-            @click="pushLink('')"
-          >
-          </v-list-item>
         </v-list-group>
         <!-- 歷史繳費記錄 end -->
+        <!-- 個人資料 start -->
+        <v-list-group value="個人資料">
+          <template v-slot:activator="{ props }">
+            <v-list-item v-bind="props" title="個人資料" color="primary">
+              <span class="material-symbols-outlined text-primary mr-2">
+                manage_accounts
+              </span>
+            </v-list-item>
+          </template>
+          <v-list-item
+            title="個人資料修改"
+            value="個人資料修改"
+            @click="pushLink('')"
+          >
+          </v-list-item>
+          <v-list-item title="修改密碼" value="修改密碼" @click="pushLink('')">
+          </v-list-item>
+        </v-list-group>
 
+        <!-- 個人資料 end -->
         <!-- 登入頁面 start -->
         <v-list-group value="login">
           <template v-slot:activator="{ props }">
