@@ -77,6 +77,14 @@ const routes = [
     component: () => import("@/views/layout/frontLoginPage.vue"),
   },
   {
+    path: "/frontFrom",
+    component: () => import("@/views/layout/frontLoginFrom.vue"),
+  },
+  {
+    path: "/frontFinish",
+    component: () => import("@/views/layout/frontLoginFinish.vue"),
+  },
+  {
     path: "/front",
     component: () => import("@/views/layout/frontLayout.vue"),
     children: [

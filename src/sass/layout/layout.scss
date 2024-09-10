@@ -721,6 +721,56 @@ header {
       height: rem(60);
     }
   }
+
+  .loginFrom {
+    min-height: 50vh;
+    width: 52%;
+
+    justify-content: center;
+    > div {
+      width: 55%;
+    }
+    .v-container {
+      padding: 0 0 2rem 0;
+    }
+    .loginBtn {
+      font-size: 1.3rem;
+      font-weight: 800;
+      padding: 0rem;
+
+      height: rem(60);
+    }
+    h1 {
+      font-weight: 700;
+      .block {
+        display: block;
+      }
+    }
+    label {
+      font-size: 1.1rem;
+      + .v-radio-group {
+        margin-top: 1rem;
+      }
+    }
+    .v-field__field {
+      label {
+        font-size: 1rem;
+      }
+    }
+    .v-radio-group {
+      .v-input__control {
+        .v-radio {
+          height: 2rem;
+        }
+      }
+      .v-label {
+        font-size: 1rem;
+      }
+    }
+    p {
+      font-size: 1.1rem;
+    }
+  }
   @include screen('desktop') {
     .infoList {
       .v-container {
@@ -732,6 +782,7 @@ header {
         }
       }
     }
+
     .memberList {
       .v-radio {
         padding: 1rem;
@@ -740,11 +791,13 @@ header {
   }
   @include screen('notebook') {
     .infoList,
-    .memberList {
+    .memberList,
+    .loginFrom {
       width: 100%;
       padding: 2rem;
     }
-    .memberList {
+    .memberList,
+    .loginFrom {
       > div {
         width: 85%;
       }

@@ -110,6 +110,16 @@ export default {
           note: "",
         },
         {
+          name: "前台登入頁填寫",
+          link: "https://hywebu00.github.io/2024_nycu/#/frontFrom",
+          note: "",
+        },
+        {
+          name: "前台登入頁填寫完成",
+          link: "https://hywebu00.github.io/2024_nycu/#/frontFinish",
+          note: "",
+        },
+        {
           name: "待繳費項目",
           link: "https://hywebu00.github.io/2024_nycu/#/front",
           note: "",
