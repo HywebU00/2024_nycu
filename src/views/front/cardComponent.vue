@@ -146,7 +146,7 @@
         <v-card-title class="pa-0 dataTableTitle mb-3">
           <h4 class="text-primary subtitle d-flex">繳費明細確認</h4>
         </v-card-title>
-        <v-row class="px-2">
+        <v-row class="px-2 mb-5">
           <v-col class="justify-end d-flex align-center" cols="12">
             <v-menu transition="slide-x-transition">
               <template v-slot:activator="{ props }">
@@ -314,9 +314,6 @@
               </div>
             </template>
           </v-data-table>
-          <v-col class="mb-5 justify-end d-flex" cols="12">
-            <p class="text-primary">檔案類型：* xlsx</p>
-          </v-col>
         </v-row>
         <div class="d-flex justify-center pa-4 pt-2">
           <v-btn
