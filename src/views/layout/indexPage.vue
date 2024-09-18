@@ -134,6 +134,11 @@ export default {
           link: "https://hywebu00.github.io/2024_nycu/#/front/userinfo",
           note: "",
         },
+        {
+          name: "繳費條碼",
+          link: "https://hywebu00.github.io/2024_nycu/#/front/code",
+          note: "",
+        },
       ],
     };
   },

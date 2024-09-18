@@ -247,7 +247,6 @@
 
       <!--  navigation-drawer end-->
     </v-navigation-drawer>
-
     <v-main>
       <div class="elevation-3">
         <pageView />
