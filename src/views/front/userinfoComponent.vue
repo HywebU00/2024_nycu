@@ -1,7 +1,7 @@
 <template>
   <v-container class="container">
     <h2 class="text-primary title">個人資料</h2>
-    <div class="mb-5">
+    <div class="mb-5 content">
       <!-- 個人資料確認 start -->
       <v-card class="elevation-0" color="transparent">
         <div>
@@ -135,63 +135,16 @@
                   ></v-text-field>
                 </v-col>
               </v-row>
-              <v-row>
-                <v-col class="d-flex justify-center">
-                  <v-btn class="ma-1 bg-light-gradient text-gray btn">
-                    重設
-                  </v-btn>
-                  <v-btn class="ma-1 bg-secondary-gradient btn"> 確認 </v-btn>
-                </v-col>
-              </v-row>
             </v-container>
           </v-form>
         </div>
       </v-card>
       <!-- 個人資料確認 end -->
     </div>
-    <!-- 收據下載 start -->
-    <h2 class="text-primary title">收據下載</h2>
-    <v-card class="elevation-0" color="transparent">
-      <v-sheet class="informationBlock mb-3">
-        <div class="title">收據下載說明：</div>
-        <ul>
-          <li>收據僅能下載一次，請透過手機截圖或點選下載保存檔案。</li>
-        </ul>
-      </v-sheet>
-      <div class="invoiceTable">
-        <table class="">
-          <thead>
-            <tr>
-              <th>繳款人</th>
-              <th>收入科目</th>
-              <th>金額</th>
-              <th>事由</th>
-              <th>備註</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>ＯＯＸＸ有限公司</td>
-              <td>贊助ＯＯ社ＯＯ活動</td>
-              <td class="num">$5,000</td>
-              <td>贊助ＯＯ社ＯＯ活動</td>
-              <td>112D10007C課外組 50905</td>
-            </tr>
-            <tr>
-              <td>ＯＯＸＸ有限公司</td>
-              <td>贊助ＯＯ社ＯＯ活動</td>
-              <td class="num">$5,000</td>
-              <td>贊助ＯＯ社ＯＯ活動</td>
-              <td>112D10007C課外組 50905</td>
-            </tr>
-            <tr class="footer">
-              <td colspan="5"><span>合計</span> 伍仟元整</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </v-card>
-    <!-- 收據下載 end -->
+    <div class="d-flex justify-center pa-4 pt-2">
+      <v-btn class="ma-1 bg-light-gradient text-gray btn"> 重設 </v-btn>
+      <v-btn class="ma-1 bg-secondary-gradient btn"> 確認 </v-btn>
+    </div>
   </v-container>
 </template>
 

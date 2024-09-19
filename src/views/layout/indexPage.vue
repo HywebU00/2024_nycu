@@ -135,6 +135,11 @@ export default {
           note: "",
         },
         {
+          name: "收據下載",
+          link: "https://hywebu00.github.io/2024_nycu/#/front/infocheck",
+          note: "",
+        },
+        {
           name: "繳費條碼",
           link: "https://hywebu00.github.io/2024_nycu/#/front/code",
           note: "",

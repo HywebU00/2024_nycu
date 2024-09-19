@@ -1,12 +1,15 @@
 <template>
   <v-container class="container">
     <h2 class="text-primary title">繳費條碼</h2>
-    <p class="text-gray mb-5">
+
+    <p class="text-gray mb-2 font-weight-bold">交易編號 : NYCU202409170001</p>
+
+    <p class="text-gray mb-2">
       繳費金額共 <span class="necessary">$20,000</span> 元，請掃描下列條碼
     </p>
-
+    <p class="text-gray mb-2">(QRCODE限5分鐘內有效)</p>
     <!-- tablet 卡片列 start -->
-    <div class="mb-5">
+    <div class="mb-5 mt-3">
       <v-card class="elevation-0" color="transparent">
         <v-row class="">
           <v-col cols="12">

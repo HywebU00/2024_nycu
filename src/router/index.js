@@ -101,6 +101,10 @@ const routes = [
         component: () => import("@/views/front/userinfoComponent.vue"),
       },
       {
+        path: "/front/infocheck",
+        component: () => import("@/views/front/userinfoCheckComponent.vue"),
+      },
+      {
         path: "/front/component",
         component: () => import("@/views/front/component.vue"),
       },

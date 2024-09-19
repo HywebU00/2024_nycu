@@ -23,123 +23,7 @@
         <li>帳單合併後無法解除綁定</li>
       </ul>
     </v-sheet>
-    <!-- 查詢區塊 start -->
-    <v-btn
-      class="mr-0 ml-auto bg-secondary-gradient searchBtn"
-      prepend-icon="mdi-magnify"
-      rounded="lg"
-      @click="expand = !expand"
-      >查詢</v-btn
-    >
-    <v-expand-transition>
-      <div height="300" v-show="expand">
-        <v-card class="mb-6 searchContent">
-          <div class="pa-6">
-            <v-form>
-              <v-container>
-                <v-row class="formGrp">
-                  <v-col cols="12" lg="6">
-                    <label class="text-gray font-weight-bold d-block" for=""
-                      >收費項目名稱
-                    </label>
-                    <v-text-field
-                      label="文字標準表單"
-                      density="compact"
-                      single-line
-                      hide-details="auto"
-                    ></v-text-field>
-                  </v-col>
-                  <v-col cols="12" lg="6">
-                    <label class="text-gray font-weight-bold d-block" for=""
-                      >計畫編號</label
-                    >
-                    <v-text-field
-                      label="文字標準表單"
-                      density="compact"
-                      single-line
-                      hide-details="auto"
-                    ></v-text-field>
-                  </v-col>
-                </v-row>
-                <v-row class="formGrp datePick">
-                  <v-col class="pb-0" cols="12" lg="2">
-                    <label class="text-gray font-weight-bold" for=""
-                      >申請日期</label
-                    >
-                  </v-col>
-                  <v-col cols="12">
-                    <v-row
-                      ><v-col>
-                        <datepickerModalVue> </datepickerModalVue
-                      ></v-col>
-                      <v-col class="tilde" cols="auto"> ~ </v-col>
-                      <v-col> <datepickerModalVue> </datepickerModalVue></v-col
-                    ></v-row>
-                  </v-col>
-                </v-row>
-                <v-row class="formGrp">
-                  <v-col class="pb-0" cols="12" lg="2">
-                    <label class="text-gray font-weight-bold" for=""
-                      >收費性質</label
-                    >
-                  </v-col>
-                  <v-col cols="12" class="pt-0">
-                    <v-select
-                      label="下拉式選單"
-                      single-line
-                      density="compact"
-                      hide-details="auto"
-                      :items="['選項ㄧ', '選項二', '選項三']"
-                    ></v-select>
-                  </v-col>
-                </v-row>
-                <v-row class="formGrp">
-                  <v-col class="pb-0" cols="12" lg="2">
-                    <label class="text-gray font-weight-bold" for=""
-                      >收費性質</label
-                    >
-                  </v-col>
-                  <v-col cols="12" class="pt-0">
-                    <v-select
-                      label="下拉式選單"
-                      single-line
-                      density="compact"
-                      hide-details="auto"
-                      :items="['選項ㄧ', '選項二', '選項三']"
-                    ></v-select>
-                  </v-col>
-                </v-row>
-                <v-row class="formGrp">
-                  <v-col class="pb-0" cols="12" lg="2">
-                    <label class="text-gray font-weight-bold" for=""
-                      >收費性質</label
-                    >
-                  </v-col>
-                  <v-col cols="12" class="pt-0">
-                    <v-select
-                      label="下拉式選單"
-                      single-line
-                      density="compact"
-                      hide-details="auto"
-                      :items="['選項ㄧ', '選項二', '選項三']"
-                    ></v-select>
-                  </v-col>
-                </v-row>
-                <v-row>
-                  <v-col class="d-flex justify-center">
-                    <v-btn class="ma-1 bg-light-gradient text-gray btn">
-                      重設
-                    </v-btn>
-                    <v-btn class="ma-1 bg-secondary-gradient btn"> 查詢 </v-btn>
-                  </v-col>
-                </v-row>
-              </v-container>
-            </v-form>
-          </div>
-        </v-card>
-      </div>
-    </v-expand-transition>
-    <!-- 查詢區塊 end  -->
+
     <!-- tablet 卡片列 start -->
     <div class="mb-5">
       <v-card class="elevation-0" color="transparent">
@@ -197,7 +81,7 @@
                 size="small"
                 color="secondary"
               >
-                申請停用
+                合併帳單
               </v-chip>
               <div
                 v-for="(i, index) in item.title"
@@ -233,7 +117,7 @@
                     v-bind="activatorProps"
                     class="my-2 bg-secondary-gradient"
                     block
-                    >解除併更</v-btn
+                    >解除併單</v-btn
                   >
                 </template>
                 <template v-slot:default="{ isActive }">

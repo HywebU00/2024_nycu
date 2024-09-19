@@ -18,25 +18,39 @@
               variant="text"
               >編輯</v-btn
             >
+            <!-- 無法編輯 請增加  disabled  -->
+            <v-btn
+              disabled
+              class="d-flex ml-auto mr-0"
+              color="primary"
+              prepend-icon="mdi-square-edit-outline"
+              variant="text"
+              >編輯</v-btn
+            >
+            <!-- 無法編輯 請增加  disabled  -->
             <v-container>
               <v-row class="formGrp">
                 <v-col cols="12" md="6" lg="3">
                   <label class="text-gray font-weight-bold d-block" for=""
                     >姓名/收據抬頭
                   </label>
+                  <!-- 無法編輯 請增加  disabled  -->
                   <v-text-field
-                    label="文字標準表單"
+                    placeholder="文字標準表單"
                     density="compact"
+                    value="凌網科技"
+                    disabled
                     single-line
                     hide-details="auto"
                   ></v-text-field>
+                  <!-- 無法編輯 請增加  disabled  -->
                 </v-col>
                 <v-col cols="12" md="6" lg="3">
                   <label class="text-gray font-weight-bold d-block" for=""
                     >Email</label
                   >
                   <v-text-field
-                    label="文字標準表單"
+                    placeholder="文字標準表單"
                     density="compact"
                     single-line
                     hide-details="auto"
@@ -47,7 +61,7 @@
                     >電話</label
                   >
                   <v-text-field
-                    label="文字標準表單"
+                    placeholder="文字標準表單"
                     density="compact"
                     single-line
                     hide-details="auto"
@@ -58,7 +72,7 @@
                     >統編</label
                   >
                   <v-text-field
-                    label="文字標準表單"
+                    placeholder="文字標準表單"
                     density="compact"
                     single-line
                     hide-details="auto"
@@ -69,7 +83,7 @@
                     >聯絡人姓名</label
                   >
                   <v-text-field
-                    label="文字標準表單"
+                    placeholder="文字標準表單"
                     density="compact"
                     single-line
                     hide-details="auto"
@@ -78,7 +92,7 @@
               </v-row>
               <div class="d-flex justify-center pa-2 pt-6 btnList">
                 <v-btn
-                  text="送出"
+                  text="儲存"
                   class="bg-secondary-gradient elevation-3 btn"
                   variant="flat"
                 ></v-btn>
