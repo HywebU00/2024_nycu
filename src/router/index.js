@@ -112,6 +112,14 @@ const routes = [
         path: "/front/code",
         component: () => import("@/views/front/codeComponent.vue"),
       },
+      {
+        path: "/front/check",
+        component: () => import("@/views/front/paymentcheckComponent.vue"),
+      },
+      {
+        path: "/front/notpay",
+        component: () => import("@/views/front/notpayComponent.vue"),
+      },
     ],
   },
 ];

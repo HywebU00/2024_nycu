@@ -144,6 +144,11 @@ export default {
           link: "https://hywebu00.github.io/2024_nycu/#/front/code",
           note: "",
         },
+        {
+          name: "信用卡對帳檔",
+          link: "https://hywebu00.github.io/2024_nycu/#/front/check",
+          note: "",
+        },
       ],
     };
   },
