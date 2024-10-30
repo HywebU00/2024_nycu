@@ -13,3 +13,17 @@
   line-height: 1.25rem !important;
   color: $gray2 !important;
 }
+.v-table__wrapper {
+  .v-data-table__tr {
+    &:has(.v-data-table__td--expanded-row) {
+      + tr:not(.v-data-table__tr) {
+        background: $gray !important;
+      }
+    }
+  }
+  .v-data-table__td--expanded-row {
+    button {
+      color: $gray2 !important;
+    }
+  }
+}

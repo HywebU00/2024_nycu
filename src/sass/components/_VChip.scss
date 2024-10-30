@@ -2,3 +2,9 @@
   font-size: 1rem !important;
   font-weight: 500 !important;
 }
+.v-chip {
+  border-radius: 5px !important;
+  min-width: rem(66) !important;
+  display: flex;
+  justify-content: center;
+}

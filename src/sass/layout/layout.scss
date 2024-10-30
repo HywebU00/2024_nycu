@@ -865,3 +865,39 @@ header {
     }
   }
 }
+.tabComponent {
+  border-radius: 0px !important;
+  .v-card-text {
+    .v-window__container {
+      p {
+        font-size: 16px;
+      }
+    }
+  }
+  .v-slide-group__content {
+    border-bottom: 1.5px solid #ccc;
+
+    .v-btn__content {
+      color: $gray2;
+    }
+    .v-btn {
+      &:hover {
+        .v-btn__overlay {
+          border-radius: 5px 5px 0 0px !important;
+        }
+      }
+
+      &.v-tab-item--selected {
+        background: $secondary-gradient;
+        border-radius: 5px 5px 0 0px !important;
+        .v-btn__content {
+          color: #fff;
+          font-weight: bolder;
+          .v-tab__slider {
+            height: 0px;
+          }
+        }
+      }
+    }
+  }
+}

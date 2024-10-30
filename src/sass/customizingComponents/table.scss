@@ -69,6 +69,7 @@ table {
   }
   tbody {
     tr {
+      font-size: 16px;
       td {
         border-bottom: unset !important;
       }
@@ -200,6 +201,25 @@ table {
       span {
         margin-right: 1rem;
         font-weight: 600;
+      }
+    }
+  }
+}
+
+.payTable {
+  .v-table__wrapper {
+    thead {
+      background: #d4d4d4;
+      tr {
+        &:nth-child(odd) {
+          background: unset;
+          color: $gray2;
+        }
+      }
+      th {
+        &:hover {
+          color: $gray2 !important;
+        }
       }
     }
   }
