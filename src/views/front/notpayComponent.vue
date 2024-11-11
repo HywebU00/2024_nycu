@@ -31,7 +31,127 @@
                     >搜尋</v-btn
                   >
                 </div>
-
+                <!-- 查詢區塊 start -->
+                <v-btn
+                  class="mr-0 ml-auto bg-secondary-gradient searchBtn"
+                  prepend-icon="mdi-magnify"
+                  rounded="lg"
+                  @click="expand = !expand"
+                  >查詢</v-btn
+                >
+                <v-expand-transition>
+                  <div height="300" v-show="expand">
+                    <v-card class="mb-6 searchContent">
+                      <div class="pa-6">
+                        <v-form>
+                          <v-container>
+                            <v-row class="formGrp datePick">
+                              <v-col class="pb-0" cols="12" lg="2">
+                                <label class="text-gray font-weight-bold" for=""
+                                  >轉帳日期
+                                  <abbr
+                                    class="necessary"
+                                    title="為必填(選)欄位,不能為空白。"
+                                    >*</abbr
+                                  >
+                                </label>
+                              </v-col>
+                              <v-col cols="12">
+                                <v-row
+                                  ><v-col>
+                                    <datepickerModalVue> </datepickerModalVue
+                                  ></v-col>
+                                  <v-col class="tilde" cols="auto"> ~ </v-col>
+                                  <v-col>
+                                    <datepickerModalVue>
+                                    </datepickerModalVue></v-col
+                                ></v-row>
+                              </v-col>
+                            </v-row>
+                            <v-row class="formGrp">
+                              <v-col cols="12" lg="12">
+                                <label
+                                  class="text-gray font-weight-bold mb-3 d-block"
+                                  for=""
+                                  >是否總收</label
+                                ><v-radio-group
+                                  inline
+                                  hide-details="auto"
+                                  color="secondary"
+                                >
+                                  <v-radio label="是" value="1"></v-radio>
+                                  <v-radio
+                                    label="否"
+                                    value="2"
+                                  ></v-radio> </v-radio-group
+                              ></v-col>
+                            </v-row>
+                            <v-row class="formGrp">
+                              <v-col cols="12" lg="12">
+                                <label
+                                  class="text-gray font-weight-bold d-block"
+                                  for=""
+                                  >虛擬帳號
+                                </label>
+                                <v-text-field
+                                  label="文字標準表單"
+                                  density="compact"
+                                  single-line
+                                  hide-details="auto"
+                                ></v-text-field>
+                              </v-col>
+                            </v-row>
+                            <v-row class="formGrp">
+                              <v-col class="pb-0" cols="12" lg="">
+                                <label class="text-gray font-weight-bold" for=""
+                                  >企業識別碼</label
+                                >
+                              </v-col>
+                              <v-col cols="12" class="pt-0">
+                                <v-select
+                                  label="下拉式選單"
+                                  single-line
+                                  density="compact"
+                                  hide-details="auto"
+                                  :items="['選項ㄧ', '選項二', '選項三']"
+                                ></v-select>
+                              </v-col>
+                            </v-row>
+                            <v-row class="formGrp">
+                              <v-col class="pb-0" cols="12" lg="">
+                                <label class="text-gray font-weight-bold" for=""
+                                  >核帳狀態</label
+                                >
+                              </v-col>
+                              <v-col cols="12" class="pt-0">
+                                <v-select
+                                  label="下拉式選單"
+                                  single-line
+                                  density="compact"
+                                  hide-details="auto"
+                                  :items="['選項ㄧ', '選項二', '選項三']"
+                                ></v-select>
+                              </v-col>
+                            </v-row>
+                            <v-row>
+                              <v-col class="d-flex justify-center">
+                                <v-btn
+                                  class="ma-1 bg-light-gradient text-gray btn"
+                                >
+                                  重設
+                                </v-btn>
+                                <v-btn class="ma-1 bg-secondary-gradient btn">
+                                  查詢
+                                </v-btn>
+                              </v-col>
+                            </v-row>
+                          </v-container>
+                        </v-form>
+                      </div>
+                    </v-card>
+                  </div>
+                </v-expand-transition>
+                <!-- 查詢區塊 end  -->
                 <v-card color="transparent" class="tabComponent elevation-0">
                   <v-tabs v-model="tab2" class="my-5">
                     <v-tab value="1">核帳資料</v-tab>
@@ -147,37 +267,73 @@
                                   </v-chip>
                                 </template>
                                 <template v-slot:item.status="{ item }">
-                                  <v-dialog max-width="420">
+                                  <!-- 標示已處理start -->
+                                  <v-dialog
+                                    class="dialogCard"
+                                    max-width="500"
+                                    scrollable
+                                  >
                                     <template
                                       v-slot:activator="{
                                         props: activatorProps,
                                       }"
                                     >
                                       <v-btn
-                                        v-bind="activatorProps"
-                                        class="my-2 bg-secondary-gradient"
+                                        class="my-1 bg-light-gradient text-gray"
                                         block
-                                        >解除併單</v-btn
+                                        v-bind="activatorProps"
+                                        color="gray"
+                                        >查看</v-btn
                                       >
                                     </template>
                                     <template v-slot:default="{ isActive }">
-                                      <v-card>
-                                        <v-card-text class="pa-12 text-center">
-                                          確認解除合併帳單？
+                                      <v-card title="電子收據">
+                                        <v-card-text class="px-4">
+                                          <div>
+                                            <v-form>
+                                              <v-container>
+                                                <v-row class="formGrp">
+                                                  <v-col cols="12" class="pt-0">
+                                                    <div class="infoBox">
+                                                      <ul>
+                                                        <li>
+                                                          <p>P12985400</p>
+                                                        </li>
+                                                        <li>
+                                                          <p class="text-error">
+                                                            P12985400
+                                                          </p>
+                                                          <span>溢繳</span>
+                                                        </li>
+                                                        <li>
+                                                          <p class="text-error">
+                                                            P12985400
+                                                          </p>
+                                                          <span>溢繳</span>
+                                                        </li>
+                                                        <li>
+                                                          <p>P12985400</p>
+                                                          <span>重複繳費</span>
+                                                        </li>
+                                                        <li>
+                                                          <p>P12985400</p>
+                                                          <span>重複繳費</span>
+                                                        </li>
+                                                      </ul>
+                                                    </div>
+                                                  </v-col>
+                                                </v-row>
+                                              </v-container>
+                                            </v-form>
+                                          </div>
                                         </v-card-text>
-                                        <v-card-actions
-                                          class="d-flex justify-center"
-                                        >
-                                          <div class="pa-4 pt-2">
+                                        <v-card-actions class="d-block">
+                                          <div
+                                            class="d-flex justify-center pa-4 pt-2"
+                                          >
                                             <v-btn
-                                              text="取消"
-                                              variant="flat"
-                                              class="bg-light-gradient text-gray elevation-3 btn"
-                                              @click="isActive.value = false"
-                                            ></v-btn>
-                                            <v-btn
-                                              class="bg-secondary-gradient elevation-3 btn"
-                                              text="確定"
+                                              text="關閉"
+                                              class="btn mx-2 bg-secondary-gradient elevation-3"
                                               variant="flat"
                                               @click="isActive.value = false"
                                             ></v-btn>
@@ -186,11 +342,6 @@
                                       </v-card>
                                     </template>
                                   </v-dialog>
-                                  <v-btn
-                                    class="my-2 bg-light-gradient text-gray"
-                                    block
-                                    >變更</v-btn
-                                  >
                                 </template>
                                 <template v-slot:item.download="{ item }">
                                   <div
@@ -215,27 +366,460 @@
                                       </v-btn>
                                     </template>
                                     <v-card class="pa-2">
-                                      <v-btn
-                                        variant="outlined"
-                                        class="my-1"
-                                        block
-                                        color="gray"
-                                        >開立繳款單</v-btn
+                                      <v-dialog
+                                        class="dialogCard"
+                                        max-width="800"
+                                        scrollable
                                       >
-                                      <v-btn
-                                        variant="outlined"
-                                        class="my-1"
-                                        block
-                                        color="gray"
-                                        >通知繳款人</v-btn
+                                        <template
+                                          v-slot:activator="{
+                                            props: activatorProps,
+                                          }"
+                                        >
+                                          <v-btn
+                                            variant="outlined"
+                                            class="my-1"
+                                            block
+                                            v-bind="activatorProps"
+                                            color="gray"
+                                            >帳務歸戶</v-btn
+                                          >
+                                        </template>
+                                        <template v-slot:default="{ isActive }">
+                                          <v-card title="異常帳務明細歸戶">
+                                            <v-card-text class="px-4">
+                                              <div>
+                                                <v-form>
+                                                  <v-container>
+                                                    <v-row class="formGrp">
+                                                      <v-col
+                                                        class="pb-0"
+                                                        cols="12"
+                                                        lg=""
+                                                      >
+                                                        <label
+                                                          class="text-gray font-weight-bold"
+                                                          for=""
+                                                          >姓名查詢</label
+                                                        >
+                                                      </v-col>
+                                                      <v-col
+                                                        cols="12"
+                                                        class="pt-0"
+                                                      >
+                                                        <v-text-field
+                                                          label="文字標準表單"
+                                                          density="compact"
+                                                          single-line
+                                                          hide-details="auto"
+                                                        ></v-text-field>
+                                                      </v-col>
+                                                    </v-row>
+                                                    <v-row class="formGrp">
+                                                      <v-col
+                                                        class="pb-0"
+                                                        cols="12"
+                                                        lg=""
+                                                      >
+                                                        <label
+                                                          class="text-gray font-weight-bold"
+                                                          for=""
+                                                          >學號/人事代號</label
+                                                        >
+                                                      </v-col>
+                                                      <v-col
+                                                        cols="12"
+                                                        class="pt-0"
+                                                      >
+                                                        <v-text-field
+                                                          label="文字標準表單"
+                                                          density="compact"
+                                                          single-line
+                                                          hide-details="auto"
+                                                        ></v-text-field>
+                                                      </v-col>
+                                                    </v-row>
+                                                    <v-row class="formGrp">
+                                                      <v-col
+                                                        class="pb-0"
+                                                        cols="12"
+                                                        lg=""
+                                                      >
+                                                        <label
+                                                          class="text-gray font-weight-bold"
+                                                          for=""
+                                                          >Email</label
+                                                        >
+                                                      </v-col>
+                                                      <v-col
+                                                        cols="12"
+                                                        class="pt-0"
+                                                      >
+                                                        <v-text-field
+                                                          label="文字標準表單"
+                                                          density="compact"
+                                                          single-line
+                                                          hide-details="auto"
+                                                        ></v-text-field>
+                                                      </v-col>
+                                                    </v-row>
+
+                                                    <v-row class="formGrp">
+                                                      <v-col
+                                                        class="pb-0"
+                                                        cols="12"
+                                                        lg=""
+                                                      >
+                                                        <label
+                                                          class="text-gray font-weight-bold"
+                                                          for=""
+                                                          >電話/分機</label
+                                                        >
+                                                      </v-col>
+                                                      <v-col
+                                                        cols="12"
+                                                        class="pt-0"
+                                                      >
+                                                        <v-text-field
+                                                          label="文字標準表單"
+                                                          density="compact"
+                                                          single-line
+                                                          hide-details="auto"
+                                                        ></v-text-field>
+                                                      </v-col>
+                                                    </v-row>
+                                                    <div
+                                                      class="d-flex justify-center pa-4 pt-6"
+                                                    >
+                                                      <v-btn
+                                                        class="bg-secondary-gradient elevation-3 btn"
+                                                        text="查詢"
+                                                        variant="flat"
+                                                      ></v-btn>
+                                                    </div>
+                                                  </v-container>
+                                                </v-form>
+
+                                                <h4
+                                                  class="text-primary subtitle my-3 ml-3"
+                                                >
+                                                  出納組確認
+                                                </h4>
+                                                <div class="my-6 mx-3">
+                                                  <v-data-table
+                                                    v-model="selected"
+                                                    :items="accountItems"
+                                                    item-value="name"
+                                                    show-select
+                                                    hide-default-footer
+                                                  ></v-data-table>
+                                                </div>
+                                                <h4
+                                                  class="text-primary subtitle my-3 ml-3"
+                                                >
+                                                  填寫資訊
+                                                </h4>
+                                                <v-form>
+                                                  <v-container>
+                                                    <v-row class="formGrp">
+                                                      <v-col
+                                                        class="pb-0"
+                                                        cols="12"
+                                                        lg=""
+                                                      >
+                                                        <label
+                                                          class="text-gray font-weight-bold"
+                                                          for=""
+                                                          >收據抬頭
+                                                          <abbr
+                                                            class="necessary"
+                                                            title="為必填(選)欄位,不能為空白。"
+                                                            >*</abbr
+                                                          ></label
+                                                        >
+                                                      </v-col>
+                                                      <v-col
+                                                        cols="12"
+                                                        class="pt-0"
+                                                      >
+                                                        <v-text-field
+                                                          label="文字標準表單"
+                                                          density="compact"
+                                                          single-line
+                                                          hide-details="auto"
+                                                        ></v-text-field>
+                                                      </v-col>
+                                                    </v-row>
+                                                    <v-row class="formGrp">
+                                                      <v-col
+                                                        class="pb-0"
+                                                        cols="12"
+                                                        lg=""
+                                                      >
+                                                        <label
+                                                          class="text-gray font-weight-bold"
+                                                          for=""
+                                                          >計畫編號
+                                                          <abbr
+                                                            class="necessary"
+                                                            title="為必填(選)欄位,不能為空白。"
+                                                            >*</abbr
+                                                          ></label
+                                                        >
+                                                      </v-col>
+                                                      <v-col
+                                                        cols="12"
+                                                        class="pt-0"
+                                                      >
+                                                        <v-text-field
+                                                          label="文字標準表單"
+                                                          density="compact"
+                                                          single-line
+                                                          hide-details="auto"
+                                                        ></v-text-field>
+                                                      </v-col>
+                                                    </v-row>
+                                                  </v-container>
+                                                </v-form>
+                                              </div>
+                                            </v-card-text>
+                                            <v-card-actions class="d-block">
+                                              <div
+                                                class="d-flex justify-center pa-4 pt-2"
+                                              >
+                                                <v-btn
+                                                  text="取消"
+                                                  variant="flat"
+                                                  class="bg-light-gradient text-gray elevation-3 btn"
+                                                  @click="
+                                                    isActive.value = false
+                                                  "
+                                                ></v-btn>
+                                                <v-btn
+                                                  class="bg-secondary-gradient elevation-3 btn"
+                                                  text="送出"
+                                                  variant="flat"
+                                                  @click="
+                                                    isActive.value = false
+                                                  "
+                                                ></v-btn>
+                                              </div>
+                                            </v-card-actions>
+                                          </v-card>
+                                        </template>
+                                      </v-dialog>
+                                      <v-dialog
+                                        class="dialogCard"
+                                        max-width="1000"
+                                        scrollable
                                       >
-                                      <v-btn
-                                        variant="outlined"
-                                        class="my-1"
-                                        block
-                                        color="gray"
-                                        >標示已處理</v-btn
+                                        <template
+                                          v-slot:activator="{
+                                            props: activatorProps,
+                                          }"
+                                        >
+                                          <v-btn
+                                            variant="outlined"
+                                            class="my-1"
+                                            block
+                                            v-bind="activatorProps"
+                                            color="gray"
+                                            >開立繳款單</v-btn
+                                          >
+                                        </template>
+                                        <template v-slot:default="{ isActive }">
+                                          <v-card
+                                            title="收費項目列表-併單繳費不足額"
+                                          >
+                                            <v-card-text class="px-4">
+                                              <div>
+                                                <ul
+                                                  class="d-flex mb-5 font-weight-bold text-gray"
+                                                >
+                                                  <li class="mx-2">
+                                                    應繳總金額
+                                                    <span class="ml-2">90</span>
+                                                  </li>
+                                                  <li class="mx-2">
+                                                    實收總金額
+                                                    <span class="ml-2">0</span>
+                                                  </li>
+                                                  <li class="mx-2">
+                                                    差額
+                                                    <span class="ml-2">90</span>
+                                                  </li>
+                                                </ul>
+                                                <v-data-table
+                                                  :items="items"
+                                                  :headers="dataTableHeaders"
+                                                  hide-default-footer
+                                                >
+                                                  <template v-slot:top>
+                                                    <ul class="d-flex mb-2">
+                                                      <li class="mx-2">
+                                                        繳款單編號：N12345
+                                                      </li>
+                                                      <li class="mx-2">
+                                                        應收金額：90
+                                                      </li>
+                                                      <li class="mx-2">
+                                                        實收金額：0
+                                                      </li>
+                                                      <li class="mx-2">
+                                                        繳費單狀態：不足額-未實收
+                                                      </li>
+                                                    </ul>
+                                                  </template>
+                                                </v-data-table>
+                                                <div class="mt-6">
+                                                  <v-data-table
+                                                    class="text-error"
+                                                    :items="items"
+                                                    :headers="dataTableHeaders"
+                                                    hide-default-footer
+                                                  >
+                                                    <template v-slot:top>
+                                                      <ul class="d-flex mb-2">
+                                                        <li class="mx-2">
+                                                          繳款單編號：N12345
+                                                        </li>
+                                                        <li class="mx-2">
+                                                          應收金額：90
+                                                        </li>
+                                                        <li class="mx-2">
+                                                          實收金額：0
+                                                        </li>
+                                                        <li class="mx-2">
+                                                          繳費單狀態：不足額-未實收
+                                                        </li>
+                                                      </ul>
+                                                    </template>
+                                                  </v-data-table>
+                                                </div>
+                                              </div>
+                                            </v-card-text>
+                                            <v-card-actions class="d-block">
+                                              <div
+                                                class="d-flex justify-center pa-4 pt-2"
+                                              >
+                                                <v-btn
+                                                  text="重新開立繳款單"
+                                                  class="mx-2 bg-secondary-gradient elevation-3 btn"
+                                                  variant="flat"
+                                                  @click="
+                                                    isActive.value = false
+                                                  "
+                                                ></v-btn>
+                                                <v-btn
+                                                  text="補開差額繳款單"
+                                                  class="mx-2 bg-secondary-gradient elevation-3 btn"
+                                                  variant="flat"
+                                                  @click="
+                                                    isActive.value = false
+                                                  "
+                                                ></v-btn>
+                                              </div>
+                                            </v-card-actions>
+                                          </v-card>
+                                        </template>
+                                      </v-dialog>
+
+                                      <!-- 標示已處理start -->
+                                      <v-dialog
+                                        class="dialogCard"
+                                        max-width="500"
+                                        scrollable
                                       >
+                                        <template
+                                          v-slot:activator="{
+                                            props: activatorProps,
+                                          }"
+                                        >
+                                          <v-btn
+                                            variant="outlined"
+                                            class="my-1"
+                                            block
+                                            v-bind="activatorProps"
+                                            color="gray"
+                                            >標示已處理</v-btn
+                                          >
+                                        </template>
+                                        <template v-slot:default="{ isActive }">
+                                          <v-card title="開立繳款單">
+                                            <v-card-text class="px-4">
+                                              <div>
+                                                <v-form>
+                                                  <v-container>
+                                                    <v-row class="formGrp">
+                                                      <v-col
+                                                        class="pb-2"
+                                                        cols="12"
+                                                        lg=""
+                                                      >
+                                                        <label
+                                                          class="text-gray font-weight-bold"
+                                                          for=""
+                                                          >備註
+                                                        </label>
+                                                      </v-col>
+                                                      <v-col
+                                                        cols="12"
+                                                        class="pt-0"
+                                                      >
+                                                        <div class="infoBox">
+                                                          <p>該筆已歸戶</p>
+                                                          <small class=""
+                                                            >2024/06/30
+                                                            15:15:15</small
+                                                          >
+                                                        </div>
+                                                      </v-col>
+                                                    </v-row>
+                                                    <v-row class="formGrp">
+                                                      <v-col
+                                                        class="pb-2"
+                                                        cols="12"
+                                                        lg=""
+                                                      >
+                                                        <label
+                                                          class="text-gray font-weight-bold"
+                                                          for=""
+                                                          >新增備註
+                                                        </label>
+                                                      </v-col>
+                                                      <v-col
+                                                        cols="12"
+                                                        class="pt-0"
+                                                      >
+                                                        <v-textarea
+                                                          label=""
+                                                          variant="outlined"
+                                                        ></v-textarea>
+                                                      </v-col>
+                                                    </v-row>
+                                                  </v-container>
+                                                </v-form>
+                                              </div>
+                                            </v-card-text>
+                                            <v-card-actions class="d-block">
+                                              <div
+                                                class="d-flex justify-center pa-4 pt-2"
+                                              >
+                                                <v-btn
+                                                  text="送出"
+                                                  class="mx-2 bg-secondary-gradient elevation-3 btn"
+                                                  variant="flat"
+                                                  @click="
+                                                    isActive.value = false
+                                                  "
+                                                ></v-btn>
+                                              </div>
+                                            </v-card-actions>
+                                          </v-card>
+                                        </template>
+                                      </v-dialog>
+                                      <!-- 標示已處理end -->
+
                                       <div class="pa-2">
                                         <span class="font-weight-medium"
                                           >上次通知日期:</span
@@ -374,7 +958,89 @@ export default {
         status: "待審",
       },
     ],
+    items: [
+      {
+        title: "N1130405F",
+        num: "55321",
+        class: "",
+        receivable: "90",
+        actual: "0",
+        difference: "90",
+        number: "",
+        receipt: "",
+      },
+      {
+        title: "N1130405F",
+        num: "55321",
+        class: "",
+        receivable: "90",
+        actual: "0",
+        difference: "90",
+        number: "",
+        receipt: "",
+      },
+      {
+        title: "N1130405F",
+        num: "55321",
+        class: "",
+        receivable: "90",
+        actual: "0",
+        difference: "90",
+        number: "",
+        receipt: "",
+      },
+    ],
+    accountItems: [
+      {
+        繳費單虛擬編號: "N1130405A",
+        金額: "1,700",
+      },
+      {
+        繳費單虛擬編號: "N1130405B",
+        金額: "1,350",
+      },
+    ],
     // table
+    dataTableHeaders: [
+      {
+        align: "center",
+        title: "收費項目",
+        key: "title",
+      },
+      {
+        title: "計畫編號",
+        key: "num",
+      },
+      {
+        title: "業管單位",
+        key: "class",
+      },
+      {
+        title: "應收金額",
+        key: "receivable",
+        align: "end",
+      },
+      {
+        title: "實收金額",
+        key: "actual",
+        align: "end",
+      },
+      {
+        title: "差額",
+        key: "difference",
+        align: "end",
+      },
+      {
+        title: "收據號碼",
+        key: "number",
+        align: "end",
+      },
+      {
+        title: "收據金額",
+        key: "receipt",
+        align: "end",
+      },
+    ],
     tableHeaders: [
       {
         align: "center",
