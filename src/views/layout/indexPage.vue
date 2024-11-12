@@ -36,7 +36,9 @@
                   <td>
                     <a :href="item.link">{{ item.link }}</a>
                   </td>
-                  <td>{{ item.note }}</td>
+                  <td>
+                    <div v-html="item.note"></div>
+                  </td>
                 </tr>
               </tbody>
             </v-table>
@@ -59,7 +61,7 @@
                   <td>
                     <a :href="item.link">{{ item.link }}</a>
                   </td>
-                  <td>{{ item.note }}</td>
+                  <td><div v-html="item.note"></div></td>
                 </tr>
               </tbody>
             </v-table>
@@ -149,6 +151,11 @@ export default {
           link: "https://hywebu00.github.io/2024_nycu/#/front/check",
           note: "",
         },
+        {
+          name: "信用卡對帳管理",
+          link: "https://hywebu00.github.io/2024_nycu/#/front/notpay",
+          note: "<br> 點擊 <b>table</b> 動作按鈕: <br><ul><li>帳務歸戶 / 開立繳款單 / 標示已處理 點擊按鈕有視窗樣式</li><li>點擊查看，有視窗樣式</li></ul><br>",
+        },
       ],
     };
   },
@@ -220,6 +227,14 @@ export default {
       }
       &:nth-child(4) {
         min-width: 250px;
+      }
+    }
+    td {
+      ul {
+        margin: 0.5rem 0;
+      }
+      li {
+        margin-bottom: 0.25rem;
       }
     }
   }
