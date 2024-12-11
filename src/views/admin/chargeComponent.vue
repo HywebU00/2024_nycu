@@ -56,6 +56,55 @@
                   </v-col>
                 </v-row>
                 <v-row class="formGrp">
+                  <v-col cols="12" lg="6">
+                    <label class="text-gray font-weight-bold d-block" for=""
+                      >單位
+                    </label>
+                    <v-select
+                      label="下拉式選單"
+                      single-line
+                      density="compact"
+                      hide-details="auto"
+                      :items="['選項ㄧ', '選項二', '選項三']"
+                    ></v-select>
+                  </v-col>
+                  <v-col cols="12" lg="6">
+                    <label class="text-gray font-weight-bold d-block" for=""
+                      >收費項目</label
+                    >
+                    <v-combobox
+                      multiple
+                      class="comboboxSelect"
+                      hide-details="auto"
+                      :items="['收費項目Ａ', '收費項目Ｂ', '收費項目Ｃ']"
+                    ></v-combobox>
+                  </v-col>
+                </v-row>
+                <v-row class="formGrp">
+                  <v-col cols="12" lg="6">
+                    <label class="text-gray font-weight-bold d-block" for=""
+                      >計畫編號
+                    </label>
+                    <v-combobox
+                      multiple
+                      class="comboboxSelect"
+                      hide-details="auto"
+                      :items="['計畫編號Ａ', '計畫編號Ｂ', '計畫編號Ｃ']"
+                    ></v-combobox>
+                  </v-col>
+                  <v-col cols="12" lg="6">
+                    <label class="text-gray font-weight-bold d-block" for=""
+                      >繳費方式</label
+                    >
+                    <v-combobox
+                      multiple
+                      class="comboboxSelect"
+                      hide-details="auto"
+                      :items="['信用卡', '臨櫃', 'ATM轉帳']"
+                    ></v-combobox>
+                  </v-col>
+                </v-row>
+                <v-row class="formGrp">
                   <v-col class="pb-0" cols="12" lg="2">
                     <label class="text-gray font-weight-bold" for=""
                       >收費性質</label

@@ -15,6 +15,14 @@ const routes = [
         component: () => import("@/views/admin/payment.vue"),
       },
       {
+        path: "addpayment",
+        component: () => import("@/views/admin/addpayment.vue"),
+      },
+      {
+        path: "addboard",
+        component: () => import("@/views/admin/addboard.vue"),
+      },
+      {
         path: "upload",
         component: () => import("@/views/admin/upload.vue"),
       },
@@ -119,6 +127,18 @@ const routes = [
       {
         path: "/front/notpay",
         component: () => import("@/views/front/notpayComponent.vue"),
+      },
+      {
+        path: "/front/faq",
+        component: () => import("@/views/front/faqComponent.vue"),
+      },
+      {
+        path: "/front/board",
+        component: () => import("@/views/front/boardComponent.vue"),
+      },
+      {
+        path: "/front/boardContent",
+        component: () => import("@/views/front/boardContent.vue"),
       },
     ],
   },

@@ -865,6 +865,16 @@ header {
     }
   }
 }
+.comboboxSelect {
+  .v-field__input {
+    height: 40px !important;
+    min-height: 40px;
+    padding: 8px 6px 8px 16px;
+  }
+  .v-field__append-inner {
+    padding-top: 6px;
+  }
+}
 .tabComponent {
   border-radius: 0px !important;
   .v-card-text {
@@ -900,4 +910,73 @@ header {
       }
     }
   }
+}
+.minHeightContainer {
+  min-height: calc(100vh - 104px);
+}
+.downloadList {
+  .v-list-item {
+    background: #f7f7f7;
+    &:nth-child(even) {
+      background-color: #fff;
+    }
+  }
+  .v-list-item__content {
+    padding-left: 1em;
+    &::before {
+      content: '•';
+      font-size: 1.7em;
+      position: absolute;
+      left: 6px;
+      top: 3px;
+      color: #0697fc;
+    }
+  }
+}
+.expansionPanel {
+  margin-bottom: 0.75rem;
+  border-radius: 0.5rem !important;
+  .v-expansion-panel-title {
+    border-radius: 0.5rem !important;
+    .num {
+      margin-right: 0.5rem;
+    }
+  }
+  .v-expansion-panel-text {
+    padding-left: 2rem;
+    .title {
+      font-size: 1.25rem;
+      color: $gray2;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+    ul {
+      list-style: disc;
+      padding-left: 1.25rem;
+    }
+    li {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+  }
+  &:not(:first-child)::after {
+    display: none;
+  }
+}
+
+.expansionPanels.v-expansion-panels:not(.v-expansion-panels--variant-accordion) > :last-child:not(:first-child):not(.v-expansion-panel--active):not(.v-expansion-panel--after-active) {
+  border-top-left-radius: 0.5rem !important;
+  border-top-right-radius: 0.5rem !important;
+}
+.expansionPanels.v-expansion-panels:not(.v-expansion-panels--variant-accordion) > :not(:first-child):not(:last-child):not(.v-expansion-panel--active):not(.v-expansion-panel--after-active) {
+  border-top-left-radius: 0.5rem !important;
+  border-top-right-radius: 0.5rem !important;
+}
+.expansionPanels.v-expansion-panels:not(.v-expansion-panels--variant-accordion) > :first-child:not(:last-child):not(.v-expansion-panel--active):not(.v-expansion-panel--before-active) {
+  border-bottom-left-radius: 0.5rem !important;
+  border-bottom-right-radius: 0.5rem !important;
+}
+.expansionPanels.v-expansion-panels:not(.v-expansion-panels--variant-accordion) > :not(:first-child):not(:last-child):not(.v-expansion-panel--active):not(.v-expansion-panel--before-active) {
+  border-bottom-left-radius: 0.5rem !important;
+  border-bottom-right-radius: 0.5rem !important;
 }

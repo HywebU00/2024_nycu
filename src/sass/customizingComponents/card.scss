@@ -262,3 +262,9 @@
   width: 220px;
   margin: 1rem;
 }
+.boardCard {
+  display: inline-block !important;
+  .v-img {
+    min-width: 500px;
+  }
+}

@@ -74,7 +74,6 @@
                 >
                 </v-btn>
               </template>
-
               <template v-slot:default="{ isActive }">
                 <v-card>
                   <v-card-text class="pa-12 text-center">

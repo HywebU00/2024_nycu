@@ -122,7 +122,8 @@ input:-internal-autofill-selected {
 .v-field--disabled {
   opacity: 0.5 !important;
 }
-.paymentForm {
+.paymentForm,
+.boardForm {
   > .v-container {
     .formGrp {
       > div:has(label) {

@@ -104,6 +104,16 @@ export default {
           link: "https://hywebu00.github.io/2024_nycu/#/invalid",
           note: "",
         },
+        {
+          name: "後台統計系統",
+          link: "https://hywebu00.github.io/2024_nycu/#/",
+          note: "",
+        },
+        {
+          name: "新增/編輯公告",
+          link: "https://hywebu00.github.io/2024_nycu/#/addboard",
+          note: "",
+        },
       ],
       front: [
         {
@@ -155,6 +165,11 @@ export default {
           name: "信用卡對帳管理",
           link: "https://hywebu00.github.io/2024_nycu/#/front/notpay",
           note: "<br> 點擊 <b>table</b> 動作按鈕: <br><ul><li>帳務歸戶 / 開立繳款單 / 標示已處理 點擊按鈕有視窗樣式</li><li>點擊查看，有視窗樣式</li></ul><br>",
+        },
+        {
+          name: "新增/編輯公告",
+          link: "https://hywebu00.github.io/2024_nycu/#/front/faq",
+          note: "",
         },
       ],
     };
