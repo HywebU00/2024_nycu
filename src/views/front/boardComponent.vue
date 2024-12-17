@@ -11,113 +11,143 @@
         :items="['選項ㄧ', '選項二', '選項三']"
       ></v-select>
     </div>
-
-    <!-- tablet 卡片列 start -->
-    <div class="mb-5">
-      <v-card class="elevation-0" color="transparent">
-        <v-row class="px-2 mb-5">
-          <v-col
-            class="justify-end d-flex align-center mb-0 flex-wrap"
-            cols="12"
-          >
-            <v-btn variant="flat" class="bg-secondary-gradient elevation-3 mx-2"
-              >新增公告事項</v-btn
-            >
-          </v-col>
-          <v-data-table
-            class="dataTable"
-            v-model:page="page"
-            :headers="tableHeaders"
-            :items="tableData"
-            item-value="num"
-            :items-per-page="itemsPerPage"
-            hide-default-footer
-          >
-            <template v-slot:item.title="{ item }">
-              <div class="d-flex align-center">
-                <v-chip
-                  v-if="item.new"
-                  class="chip mt-0 elevation-0 text-deep-orange-lighten-1"
-                  variant="elevated"
-                  size="small"
-                  color="deep-orange-lighten-5"
+    <v-row>
+      <v-col lg="2" md="3" cols="12" class="">
+        <v-card class="pa-2 mt-12 mt-sm-6">
+          <h4 class="text-h7 text-primary font-weight-bold mb-2">語言切換</h4>
+          <v-divider></v-divider>
+          <v-form>
+            <v-container class="mt-0">
+              <v-row>
+                <v-col cols="">
+                  <v-btn
+                    disabled
+                    block
+                    class="my-2 elevation-0 bg-primary-gradient"
+                    >中文版</v-btn
+                  >
+                  <v-btn block class="my-2 elevation-0 bg-primary-gradient"
+                    >英文版</v-btn
+                  >
+                </v-col>
+              </v-row>
+            </v-container>
+          </v-form>
+        </v-card>
+      </v-col>
+      <v-col>
+        <!-- 卡片列 start -->
+        <div class="mb-5">
+          <v-card class="elevation-0" color="transparent">
+            <v-row class="px-2 mb-5">
+              <v-col
+                class="justify-end d-flex align-center mb-0 flex-wrap"
+                cols="12"
+              >
+                <v-btn
+                  variant="flat"
+                  class="bg-secondary-gradient elevation-3 mx-2"
+                  >新增公告事項</v-btn
                 >
-                  最新
-                </v-chip>
-                <v-chip
-                  v-if="item.draft"
-                  class="chip mt-0 elevation-0 text-blue-lighten-1"
-                  variant="elevated"
-                  size="small"
-                  color="blue-lighten-5"
-                >
-                  草稿
-                </v-chip>
-                <div class="">
-                  {{ item.title }}
-                </div>
-              </div>
-            </template>
-            <template v-slot:item.action="{ item }">
-              <div class="">
-                <v-menu transition="slide-y-transition">
-                  <template v-slot:activator="{ props }">
-                    <v-btn
-                      icon="mdi-chevron-down"
-                      class="ma-2 bg-secondary-gradient downBtn"
-                      v-bind="props"
-                      size="x-small"
+              </v-col>
+              <v-data-table
+                class="dataTable"
+                v-model:page="page"
+                :headers="tableHeaders"
+                :items="tableData"
+                item-value="num"
+                :items-per-page="itemsPerPage"
+                hide-default-footer
+              >
+                <template v-slot:item.title="{ item }">
+                  <div class="d-flex align-center">
+                    <v-chip
+                      v-if="item.new"
+                      class="chip mt-0 elevation-0 text-deep-orange-lighten-1"
+                      variant="elevated"
+                      size="small"
+                      color="deep-orange-lighten-5"
                     >
-                    </v-btn>
-                  </template>
-                  <v-card class="pa-2">
-                    <v-btn
-                      variant="outlined"
-                      class="mb-2"
-                      block
+                      最新
+                    </v-chip>
+                    <v-chip
+                      v-if="item.draft"
+                      class="chip mt-0 elevation-0 text-blue-lighten-1"
+                      variant="elevated"
+                      size="small"
+                      color="blue-lighten-5"
+                    >
+                      草稿
+                    </v-chip>
+                    <div class="">
+                      {{ item.title }}
+                    </div>
+                  </div>
+                </template>
+                <template v-slot:item.action="{ item }">
+                  <div class="">
+                    <v-menu transition="slide-y-transition">
+                      <template v-slot:activator="{ props }">
+                        <v-btn
+                          icon="mdi-chevron-down"
+                          class="ma-2 bg-secondary-gradient downBtn"
+                          v-bind="props"
+                          size="x-small"
+                        >
+                        </v-btn>
+                      </template>
+                      <v-card class="pa-2">
+                        <v-btn
+                          variant="outlined"
+                          class="mb-2"
+                          block
+                          color="gray"
+                          v-bind="activatorProps"
+                          >查閱</v-btn
+                        >
+                        <v-btn variant="outlined" block color="gray"
+                          >停用</v-btn
+                        >
+                      </v-card>
+                    </v-menu>
+                  </div>
+                </template>
+                <template v-slot:bottom>
+                  <div class="d-flex align-center justify-center pagination">
+                    <span
+                      >共{{ tableData.length }}筆資料，第1/{{
+                        pageCount || 1
+                      }}頁，每頁顯示 </span
+                    >
+                    <v-text-field
+                      :model-value="itemsPerPage"
+                      class="mx-2"
+                      max="15"
+                      density="compact"
+                      min="1"
+                      type="number"
+                      hide-details
+                      @update:model-value="itemsPerPage = parseInt($event, 10)"
+                    ></v-text-field>
+                    <span>筆</span>
+                  </div>
+                  <div class="text-center mt-6">
+                    <v-pagination
+                      active-color="gray"
                       color="gray"
-                      v-bind="activatorProps"
-                      >查閱</v-btn
-                    >
-                    <v-btn variant="outlined" block color="gray">停用</v-btn>
-                  </v-card>
-                </v-menu>
-              </div>
-            </template>
-            <template v-slot:bottom>
-              <div class="d-flex align-center justify-center pagination">
-                <span
-                  >共{{ tableData.length }}筆資料，第1/{{
-                    pageCount || 1
-                  }}頁，每頁顯示 </span
-                >
-                <v-text-field
-                  :model-value="itemsPerPage"
-                  class="mx-2"
-                  max="15"
-                  density="compact"
-                  min="1"
-                  type="number"
-                  hide-details
-                  @update:model-value="itemsPerPage = parseInt($event, 10)"
-                ></v-text-field>
-                <span>筆</span>
-              </div>
-              <div class="text-center mt-6">
-                <v-pagination
-                  active-color="gray"
-                  color="gray"
-                  size="small"
-                  v-model="page"
-                  :length="pageCount"
-                ></v-pagination>
-              </div>
-            </template>
-          </v-data-table>
-        </v-row>
-      </v-card>
-    </div>
-    <!-- tablet 卡片列 end -->
+                      size="small"
+                      v-model="page"
+                      :length="pageCount"
+                    ></v-pagination>
+                  </div>
+                </template>
+              </v-data-table>
+            </v-row>
+          </v-card>
+        </div>
+        <!-- 卡片列 end -->
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 

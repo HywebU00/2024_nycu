@@ -4,7 +4,7 @@
     <!-- tablet 卡片列 start -->
     <div class="mb-5">
       <v-card class="elevation-0" color="transparent">
-        <v-row class="px-2 mb-3">
+        <v-row class="px-2 mb-1">
           <v-col class="" cols="12">
             <p class="my-5">
               本月系統升級時間為2024/10/31(四) 01:00-02:00

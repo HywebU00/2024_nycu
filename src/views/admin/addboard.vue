@@ -213,10 +213,12 @@
               </v-row>
             </div>
           </v-col>
-          <v-col lg="2" md="3" cols="12" class="">
+          <v-col lg="2" md="3" cols="12" class="fixedCard">
             <v-card class="pa-2 mb-3">
-              <h4 class="text-h7 text-primary font-weight-bold">發布狀態</h4>
-              <v-divider class="pt-1 mb-2"></v-divider>
+              <h4 class="text-h7 text-primary font-weight-bold mb-2">
+                發布狀態
+              </h4>
+              <v-divider></v-divider>
               <v-form>
                 <v-container>
                   <v-row class="formGrp">
@@ -233,7 +235,7 @@
                   </v-row>
                   <v-row class="formGrp">
                     <v-col cols="">
-                      <v-btn block class="bg-grey-darken-1">確定發布</v-btn>
+                      <v-btn block class="bg-primary-gradient">確定發布</v-btn>
                     </v-col>
                   </v-row>
                 </v-container>

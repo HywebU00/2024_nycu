@@ -933,6 +933,142 @@ header {
     }
   }
 }
+
+.tableList {
+  & table {
+    width: 100%;
+    border-collapse: collapse;
+    @media screen and (max-width: 960px) {
+      width: 100%;
+    }
+    th,
+    td {
+      text-align: left;
+    }
+    caption {
+      font-weight: bold;
+      text-align: left;
+      font-size: 1.125rem;
+      margin-bottom: 0.5em;
+      .summary {
+        display: block;
+        font-size: 1em;
+        font-weight: normal;
+      }
+    }
+    td {
+      word-break: break-all;
+      a {
+        word-break: break-all;
+      }
+    }
+    th {
+      background-color: #f3f3f3;
+      color: #333;
+      border: #ddd 1px solid;
+      text-align: center;
+      white-space: nowrap;
+    }
+    &.tableHover {
+      tr:hover {
+        background: #f3f3f3;
+      }
+    }
+    &.tableSprite {
+      tr:nth-child(even) {
+        background: #f5f5f5;
+      }
+    }
+  }
+  @media screen and (max-width: 960px) {
+    background-color: transparent;
+    thead,
+    tbody,
+    th,
+    td,
+    tr {
+      display: block;
+    }
+    thead tr {
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+    tr {
+      border: 1px solid #ccc;
+      margin-bottom: 10px;
+    }
+    td {
+      border: none;
+      border-bottom: 1px solid #eee;
+      position: relative;
+      padding: 1em;
+      padding-left: 32%;
+      white-space: normal;
+      text-align: left;
+      button {
+        margin: 0 !important;
+      }
+    }
+    &.loaded td {
+      background: #fff;
+      &:nth-child(odd) {
+        background: #f7f7f7;
+      }
+      &:before {
+        background: linear-gradient(180deg, #a0a0a0, #6f6f6f 100%);
+        content: attr(data-title);
+        position: absolute;
+        min-height: 74px;
+        top: 0;
+        left: 0;
+        width: 30%;
+        padding: 1em;
+        padding-right: 10px;
+        text-align: left;
+        font-weight: bold;
+        color: #fff;
+      }
+    }
+  }
+  @media screen and (max-width: 375px) {
+    td {
+      padding-left: 40%;
+    }
+    &.loaded td {
+      &:before {
+        width: 38%;
+      }
+    }
+  }
+}
+.fixedCard {
+  position: relative;
+  .v-card {
+    position: fixed;
+    width: 11%;
+  }
+  @media screen and (max-width: 1280px) {
+    .v-card {
+      width: 14%;
+    }
+  }
+  @media screen and (max-width: 960px) {
+    .v-card {
+      position: relative;
+      width: 100%;
+    }
+  }
+}
+.paginationStyle {
+  margin: 2rem 0;
+  color: #4b4b4b;
+  .v-input {
+    width: 60px;
+    flex: none;
+  }
+}
+
 .expansionPanel {
   margin-bottom: 0.75rem;
   border-radius: 0.5rem !important;

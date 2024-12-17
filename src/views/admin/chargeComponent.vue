@@ -702,7 +702,91 @@
             </v-dialog>
           </v-col>
         </v-row>
-        <dataTable></dataTable>
+
+        <div class="tableList d-sm-none">
+          <table>
+            <thead>
+              <tr>
+                <th>申請日期</th>
+                <th>計畫編號</th>
+                <th>收費項目名稱</th>
+                <th>單位名稱</th>
+                <th>收費性質</th>
+                <th>申請項目</th>
+                <th>狀態</th>
+                <th>動作</th>
+                <th>收費項目</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="i in 3" :key="i">
+                <td>2024/06/01</td>
+                <td>N1130145</td>
+                <td>113年學生會活動攤販租金</td>
+                <td>
+                  <v-text-field
+                    label="文字標準表單"
+                    density="compact"
+                    single-line
+                    hide-details="auto"
+                  ></v-text-field>
+                </td>
+                <td>一般收費</td>
+                <td>申請新增</td>
+                <td>申請中</td>
+                <td>
+                  <v-menu transition="slide-y-transition">
+                    <template v-slot:activator="{ props }">
+                      <v-btn
+                        icon="mdi-chevron-down"
+                        class="ma-2 bg-secondary-gradient downBtn"
+                        v-bind="props"
+                        size="x-small"
+                      >
+                      </v-btn>
+                    </template>
+                    <v-card class="pa-2">
+                      <v-btn
+                        variant="outlined"
+                        class="mb-2"
+                        block
+                        color="gray"
+                        v-bind="activatorProps"
+                        >查閱</v-btn
+                      >
+                      <v-btn variant="outlined" block color="gray">停用</v-btn>
+                    </v-card>
+                  </v-menu>
+                </td>
+                <td>
+                  <v-select
+                    width="160"
+                    label="下拉式選單"
+                    single-line
+                    density="compact"
+                    hide-details="auto"
+                    :items="['選項ㄧ', '選項二', '選項三']"
+                  ></v-select>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="paginationStyle">
+            <div class="d-flex justify-center align-center">
+              共7筆資料，第1/2頁，每頁顯示
+              <v-text-field
+                label=""
+                density="compact"
+                single-line
+                type="number"
+                hide-details="auto"
+              ></v-text-field>
+              筆
+            </div>
+            <v-pagination class="mt-6" :length="3" size="small"></v-pagination>
+          </div>
+        </div>
+        <dataTable class="d-sm-block d-none"></dataTable>
       </v-card>
     </div>
     <!-- tablet 卡片列 end -->
@@ -724,6 +808,8 @@ export default {
     visible: false,
     expand: false,
     //table data
+    windowWidth: "",
+    mobileWidth: false,
     data: [
       {
         id: "1",
@@ -757,7 +843,56 @@ export default {
       },
     ],
   }),
-  methods: {},
+  methods: {
+    tableAddDataAttributes(obj) {
+      const el = document.querySelectorAll(obj.elemClass);
+      el.forEach((i) => {
+        const tableItem = i.querySelectorAll("table");
+        tableItem.forEach((i) => {
+          setTrAttr(i);
+        });
+        i.classList.add("loaded");
+      });
+      function setTrAttr(i) {
+        const thList = i.querySelectorAll("th");
+        const trList = i.querySelectorAll("tr");
+        trList.forEach((trItem) => {
+          const tdList = trItem.querySelectorAll("td");
+          tdList.forEach((i, idx) => {
+            tdList[idx].setAttribute(
+              `data-${obj.dataName}`,
+              `${thList[idx].textContent}`
+            );
+          });
+        });
+      }
+    },
+    getWidth() {
+      this.windowWidth = window.innerWidth;
+      if (this.windowWidth > 960) {
+        this.mobileWidth = false;
+      } else {
+        this.mobileWidth = true;
+      }
+    },
+  },
+  mounted() {
+    this.getWidth();
+
+    this.tableAddDataAttributes({
+      elemClass: ".tableList", // 目標table
+      dataName: "title", // tableList樣式 加上 data-title
+    });
+    window.addEventListener("resize", function () {
+      this.windowWidth = window.innerWidth;
+      if (this.windowWidth > 960) {
+        this.mobileWidth.value = false;
+      } else {
+        this.mobileWidth.value = true;
+      }
+    });
+  },
+  watch() {},
   components: {
     dataTable,
     datepickerModalVue,
