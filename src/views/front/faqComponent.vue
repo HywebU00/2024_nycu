@@ -30,7 +30,7 @@
                     Ｑ：如何查詢待繳費項目？
                   </v-expansion-panel-title>
                   <v-expansion-panel-text>
-                    <div class="content">
+                    <div class="">
                       <div class="title">A:</div>
                       <ul>
                         <li>限繳費期限內之帳單合併繳費</li>
@@ -51,7 +51,7 @@
                     Ｑ：固定規費繳費方式？
                   </v-expansion-panel-title>
                   <v-expansion-panel-text>
-                    <div class="content">
+                    <div class="">
                       <div class="title">A:</div>
                       <ul>
                         <li>限繳費期限內之帳單合併繳費</li>
@@ -72,7 +72,7 @@
                     Ｑ：為什麼無法合併帳單？
                   </v-expansion-panel-title>
                   <v-expansion-panel-text>
-                    <div class="content">
+                    <div class="">
                       <div class="title">A:</div>
                       <ul>
                         <li>限繳費期限內之帳單合併繳費</li>
@@ -93,7 +93,7 @@
                     Ｑ：繳費方式有哪些？
                   </v-expansion-panel-title>
                   <v-expansion-panel-text>
-                    <div class="content">
+                    <div class="">
                       <div class="title">A:</div>
                       <ul>
                         <li>限繳費期限內之帳單合併繳費</li>
