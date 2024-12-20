@@ -1,1 +1,0 @@
-import{u as t,J as e,f as s,ar as n}from"./index.be9352ca.js";function u(){const o=t(!1);return e(()=>{window.requestAnimationFrame(()=>{o.value=!0})}),{ssrBootStyles:s(()=>o.value?void 0:{transition:"none !important"}),isBooted:n(o)}}export{u};
