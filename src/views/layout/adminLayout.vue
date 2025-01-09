@@ -4,9 +4,10 @@
       <v-app-bar-nav-icon
         :icon="rail ? 'mdi-chevron-right' : 'mdi-chevron-left'"
         width="64"
-        class="rounded-0 h-100 ml-0 d-md-none menuBtn"
+        class="rounded-0 h-100 ml-0 menuBtn"
         @click.stop="rail = !rail"
       ></v-app-bar-nav-icon>
+      <!-- d-md-none -->
       <!-- 平台logo start -->
       <div class="logoImg">
         <v-img class="logo" src="~@/assets/images/logo.png" alt="" />
