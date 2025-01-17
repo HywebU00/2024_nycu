@@ -5,8 +5,10 @@
         :icon="rail ? 'mdi-chevron-right' : 'mdi-chevron-left'"
         width="64"
         class="rounded-0 h-100 ml-0 menuBtn"
-        @click.stop="rail = !rail"
+        @click.stop="[(rail = !rail), handleOverlay()]"
       ></v-app-bar-nav-icon>
+      <!-- (overlay = !overlay) -->
+      <!-- @click.stop="rail = !rail" -->
       <!-- d-md-none -->
       <!-- 平台logo start -->
       <div class="logoImg">
@@ -28,8 +30,9 @@
       permanent
       :rail-width="railWidth"
       width="256"
-      @click="rail = false"
+      @click="[isSmallScreen ? ((rail = !rail), (overlay = !overlay)) : null]"
     >
+      <!-- (rail = !rail),  -->
       <v-list
         density="compact"
         nav
@@ -250,6 +253,11 @@
     </v-navigation-drawer>
     <v-main>
       <div class="elevation-3">
+        <v-overlay
+          v-if="isSmallScreen"
+          v-model="overlay"
+          @click="rail = !rail"
+        ></v-overlay>
         <pageView />
       </div>
     </v-main>
@@ -281,6 +289,9 @@ export default {
       this.windowWidth = window.innerWidth;
       this.windowWidth < 959 ? null : (this.rail = false);
       this.isSmallScreen = window.innerWidth < 991;
+      if (this.isSmallScreen) {
+        this.handleOverlay();
+      }
     },
     menuTarget(newOpened) {
       this.opened = newOpened.slice(-1);
@@ -288,10 +299,28 @@ export default {
     pushLink(item) {
       this.$router.push({ path: item });
     },
+    getWidth() {
+      this.windowWidth = window.innerWidth;
+      if (this.windowWidth > 960) {
+        this.rail = false;
+      } else {
+        this.rail = true;
+      }
+    },
+    handleOverlay() {
+      if (this.isSmallScreen) {
+        this.overlay = !this.overlay;
+      }
+      if (this.rail) {
+        this.overlay = false;
+      }
+    },
   },
   mounted() {
     this.windowWidth = window.innerWidth;
     this.handleResize();
+    this.getWidth();
+    this.handleOverlay();
     window.addEventListener("resize", this.handleResize);
   },
 };

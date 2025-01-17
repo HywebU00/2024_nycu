@@ -886,9 +886,9 @@ export default {
     window.addEventListener("resize", function () {
       this.windowWidth = window.innerWidth;
       if (this.windowWidth > 960) {
-        this.mobileWidth.value = false;
+        this.mobileWidth = false;
       } else {
-        this.mobileWidth.value = true;
+        this.mobileWidth = true;
       }
     });
   },

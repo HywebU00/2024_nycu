@@ -962,6 +962,11 @@ header {
       a {
         word-break: break-all;
       }
+      .v-checkbox {
+        .v-selection-control {
+          min-height: 40px;
+        }
+      }
     }
     th {
       background-color: #f3f3f3;
@@ -1020,7 +1025,8 @@ header {
         background: linear-gradient(180deg, #a0a0a0, #6f6f6f 100%);
         content: attr(data-title);
         position: absolute;
-        min-height: 74px;
+        // min-height: 74px;
+        bottom: 0;
         top: 0;
         left: 0;
         width: 30%;
@@ -1116,4 +1122,9 @@ header {
 .expansionPanels.v-expansion-panels:not(.v-expansion-panels--variant-accordion) > :not(:first-child):not(:last-child):not(.v-expansion-panel--active):not(.v-expansion-panel--before-active) {
   border-bottom-left-radius: 0.5rem !important;
   border-bottom-right-radius: 0.5rem !important;
+}
+.v-overlay-container {
+  .v-overlay {
+    z-index: 1000 !important;
+  }
 }
