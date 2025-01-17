@@ -81,9 +81,11 @@
           active-color="gray"
           color="gray"
           size="small"
-          v-model="page"
           :length="pageCount"
+          v-model="page"
+          @click="scrollTop"
         ></v-pagination>
+        <!-- v-model="page" -->
       </div>
     </template>
   </v-data-table>
@@ -93,7 +95,7 @@ export default {
   data() {
     return {
       page: 1,
-      itemsPerPage: 5,
+      itemsPerPage: 10,
       selected: [],
       headers: [
         {
@@ -153,7 +155,7 @@ export default {
           status: "停用中",
         },
         {
-          date: "2024/04/01",
+          date: "2024/04/02",
           num: "N1130065",
           name: "112年暑期補修學分費",
           type: "保證金",
@@ -168,8 +170,181 @@ export default {
           project: "申請停用",
           status: "申請停用",
         },
+        {
+          date: "2022/06/01",
+          num: "N1130145",
+          name: "113年學生會活動攤販租金",
+          type: "一般收費",
+          project: "申請新增",
+          status: "申請中",
+        },
+        {
+          date: "2022/05/20",
+          num: "N1130069",
+          name: "汽車停車證",
+          type: "一般收費",
+          project: "申請停用",
+          status: "停用中",
+        },
+        {
+          date: "2022/05/10",
+          num: "N1130068",
+          name: "羽球場館租借費",
+          type: "一般收費",
+          project: "申請新增",
+          status: "已通過",
+        },
+        {
+          date: "2022/05/30",
+          num: "N1130067",
+          name: "端午義賣活動捐款",
+          type: "捐款",
+          project: "申請新增",
+          status: "退回",
+        },
+        {
+          date: "2022/04/01",
+          num: "N1130066",
+          name: "學生宿舍Ａ棟水費",
+          type: "一般收費",
+          project: "申請停用",
+          status: "停用中",
+        },
+        {
+          date: "2022/04/02",
+          num: "N1130065",
+          name: "112年暑期補修學分費",
+          type: "保證金",
+          project: "申請新增",
+          status: "暫存草稿",
+        },
+        {
+          date: "2022/03/15",
+          num: "N1130064",
+          name: "學生會籃球賽場地費",
+          type: "代收代付",
+          project: "申請停用",
+          status: "申請停用",
+        },
+        {
+          date: "2023/06/01",
+          num: "N1130145",
+          name: "113年學生會活動攤販租金",
+          type: "一般收費",
+          project: "申請新增",
+          status: "申請中",
+        },
+        {
+          date: "2023/05/20",
+          num: "N1130069",
+          name: "汽車停車證",
+          type: "一般收費",
+          project: "申請停用",
+          status: "停用中",
+        },
+        {
+          date: "2023/05/10",
+          num: "N1130068",
+          name: "羽球場館租借費",
+          type: "一般收費",
+          project: "申請新增",
+          status: "已通過",
+        },
+        {
+          date: "2023/05/30",
+          num: "N1130067",
+          name: "端午義賣活動捐款",
+          type: "捐款",
+          project: "申請新增",
+          status: "退回",
+        },
+        {
+          date: "2023/04/01",
+          num: "N1130066",
+          name: "學生宿舍Ａ棟水費",
+          type: "一般收費",
+          project: "申請停用",
+          status: "停用中",
+        },
+        {
+          date: "2023/04/02",
+          num: "N1130065",
+          name: "112年暑期補修學分費",
+          type: "保證金",
+          project: "申請新增",
+          status: "暫存草稿",
+        },
+        {
+          date: "2023/03/15",
+          num: "N1130064",
+          name: "學生會籃球賽場地費",
+          type: "代收代付",
+          project: "申請停用",
+          status: "申請停用",
+        },
+        {
+          date: "2021/06/01",
+          num: "N1130145",
+          name: "113年學生會活動攤販租金",
+          type: "一般收費",
+          project: "申請新增",
+          status: "申請中",
+        },
+        {
+          date: "2021/05/20",
+          num: "N1130069",
+          name: "汽車停車證",
+          type: "一般收費",
+          project: "申請停用",
+          status: "停用中",
+        },
+        {
+          date: "2021/05/10",
+          num: "N1130068",
+          name: "羽球場館租借費",
+          type: "一般收費",
+          project: "申請新增",
+          status: "已通過",
+        },
+        {
+          date: "2021/05/30",
+          num: "N1130067",
+          name: "端午義賣活動捐款",
+          type: "捐款",
+          project: "申請新增",
+          status: "退回",
+        },
+        {
+          date: "2021/04/01",
+          num: "N1130066",
+          name: "學生宿舍Ａ棟水費",
+          type: "一般收費",
+          project: "申請停用",
+          status: "停用中",
+        },
+        {
+          date: "2021/04/02",
+          num: "N1130065",
+          name: "112年暑期補修學分費",
+          type: "保證金",
+          project: "申請新增",
+          status: "暫存草稿",
+        },
+        {
+          date: "2021/03/15",
+          num: "N1130064",
+          name: "學生會籃球賽場地費",
+          type: "代收代付",
+          project: "申請停用",
+          status: "申請停用",
+        },
       ],
     };
+  },
+  methods: {
+    scrollTop() {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    },
   },
   computed: {
     pageCount() {

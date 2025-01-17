@@ -164,6 +164,7 @@
                   class="mt-6"
                   :length="3"
                   size="small"
+                  @click="scrollTop"
                 ></v-pagination>
               </div>
             </div>
@@ -309,6 +310,7 @@
                     color="gray"
                     size="small"
                     v-model="page"
+                    @click="scrollTop"
                     :length="pageCount"
                   ></v-pagination>
                 </div>
@@ -505,6 +507,9 @@ export default {
           });
         });
       }
+    },
+    scrollTop() {
+      window.scrollTo({ top: 0, behavior: "smooth" });
     },
   },
   mounted() {

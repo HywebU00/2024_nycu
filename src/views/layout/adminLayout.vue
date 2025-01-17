@@ -257,6 +257,7 @@
           v-if="isSmallScreen"
           v-model="overlay"
           @click="rail = !rail"
+          style="z-index: 1000"
         ></v-overlay>
         <pageView />
       </div>

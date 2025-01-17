@@ -783,7 +783,12 @@
               ></v-text-field>
               筆
             </div>
-            <v-pagination class="mt-6" :length="3" size="small"></v-pagination>
+            <v-pagination
+              class="mt-6"
+              :length="3"
+              size="small"
+              @click="scrollTop"
+            ></v-pagination>
           </div>
         </div>
         <dataTable class="d-sm-block d-none"></dataTable>
@@ -875,10 +880,12 @@ export default {
         this.mobileWidth = true;
       }
     },
+    scrollTop() {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    },
   },
   mounted() {
     this.getWidth();
-
     this.tableAddDataAttributes({
       elemClass: ".tableList", // 目標table
       dataName: "title", // tableList樣式 加上 data-title
