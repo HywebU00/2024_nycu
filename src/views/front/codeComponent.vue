@@ -11,7 +11,10 @@
     <!-- tablet 卡片列 start -->
     <div class="mb-5 mt-3">
       <v-card class="elevation-0" color="transparent">
-        <v-row class="">
+        <v-row class="mt-0">
+          <v-col> <codeTable /></v-col>
+        </v-row>
+        <!-- <v-row class="">
           <v-col cols="12">
             <v-sheet class="informationBlock codeInfoBlock">
               <v-card class="pa-3 codeCard">
@@ -53,7 +56,7 @@
               </v-card>
             </v-sheet>
           </v-col>
-        </v-row>
+        </v-row> -->
         <v-sheet class="informationBlock my-6">
           <div class="title">超商繳費：</div>
           <ul>
@@ -75,12 +78,55 @@
             class="bg-light-gradient text-gray elevation-3 btn mx-2"
             @click="isActive.value = false"
           ></v-btn>
-          <v-btn
-            class="bg-secondary-gradient elevation-3 btn mx-2"
-            text="下載繳費單"
-            variant="flat"
-            @click="isActive.value = false"
-          ></v-btn>
+
+          <v-dialog class="dialogCard" max-width="800" scrollable>
+            <template v-slot:activator="{ props: activatorProps }">
+              <v-btn
+                class="bg-secondary-gradient elevation-3 btn mx-2"
+                text="下載繳費單"
+                v-bind="activatorProps"
+                color="gray"
+              ></v-btn>
+            </template>
+            <template v-slot:default="{ isActive }">
+              <v-card>
+                <v-card-text class="px-4">
+                  <v-row>
+                    <v-col>
+                      <div class="logoText">
+                        <v-img
+                          class=""
+                          cover
+                          src="@/assets/images/login_logo.png"
+                        ></v-img>
+                      </div>
+                      <h2 class="text-primary title">繳費條碼</h2>
+                      <p class="text-gray mb-2 font-weight-bold">
+                        交易編號 : NYCU202409170001
+                      </p>
+                      <p class="text-gray mb-2">
+                        繳費金額共
+                        <span class="necessary">$20,000</span>
+                        元，請掃描下列條碼
+                      </p>
+                      <p class="text-gray mb-2">(QRCODE限5分鐘內有效)</p>
+                      <codeTable />
+                    </v-col>
+                  </v-row>
+                </v-card-text>
+                <v-card-actions class="d-block">
+                  <div class="d-flex justify-center pa-4 pt-2">
+                    <v-btn
+                      text="關閉"
+                      class="btn mx-2 bg-secondary-gradient elevation-3"
+                      variant="flat"
+                      @click="isActive.value = false"
+                    ></v-btn>
+                  </div>
+                </v-card-actions>
+              </v-card>
+            </template>
+          </v-dialog>
         </div>
       </v-card>
     </div>
@@ -91,6 +137,7 @@
 <script>
 //載入 Ｖuetify組合 日期選擇器
 import datepickerModalVue from "@/components/datepickerModal.vue";
+import codeTable from "@/components/codeTable.vue";
 export default {
   data: () => ({
     tab: null,
@@ -228,6 +275,7 @@ export default {
   methods: {},
   components: {
     datepickerModalVue,
+    codeTable,
   },
   computed: {
     pageCount() {
