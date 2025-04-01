@@ -1123,3 +1123,26 @@ header {
   border-bottom-left-radius: 0.5rem !important;
   border-bottom-right-radius: 0.5rem !important;
 }
+
+//列印設定ＣＳＳ
+@media print {
+  .v-navigation-drawer {
+    display: none !important;
+  }
+  header {
+    .menuBtn {
+      display: none;
+    }
+    .logoImg {
+      white-space: nowrap;
+    }
+    .userInfo {
+      > .mr-3 {
+        display: none;
+      }
+    }
+  }
+  .v-main {
+    padding-left: 0 !important;
+  }
+}
